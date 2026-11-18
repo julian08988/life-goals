@@ -10,7 +10,7 @@ import { Chip } from '@/ui/components/Chip';
 import { GoalRow } from '@/ui/components/GoalRow';
 import { Text } from '@/ui/components/Text';
 import { VoiceComposer } from '@/ui/components/VoiceComposer';
-import { spacing } from '@/ui/theme';
+import { colors, spacing } from '@/ui/theme';
 import { useVoice } from '@/voice/useVoice';
 
 import { StepFrame } from '../StepFrame';
@@ -104,6 +104,16 @@ export function ActionsStep({
         />
       </View>
 
+      {covered < priorities.length ? (
+        <Text variant="small" color={colors.textMuted}>
+          Every priority needs at least one action before you can continue. Still missing:{' '}
+          {priorities
+            .filter((p) => !actionsForWeekGoal(state, p.id).some((a) => a.status === 'open'))
+            .map((p) => `“${p.text}”`)
+            .join(', ')}
+          .
+        </Text>
+      ) : null}
       <View style={styles.nav}>
         <Button label="Back" kind="ghost" compact onPress={onBack} />
         <Button label={nextLabel} onPress={onNext} disabled={covered < priorities.length} compact />
