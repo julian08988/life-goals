@@ -1,6 +1,6 @@
 # Life Goals — Build and Launch Plan, Week 1 (Wed Nov 18 – Tue Nov 24, 2026)
 
-Status: plan v0.2, written Tue Nov 17, 2026, aligned Wed Nov 18 to [`core-product.md`](core-product.md) (the spec: killer feature §2, core loop §3, functional spec §4, data model §5, positioning §6). Companion to [`product-concept.md`](product-concept.md) (method §4, design §7, technical direction §8) and [`market-research.md`](market-research.md). Where the spec and this plan disagree, the spec wins.
+Status: plan v0.3, written Tue Nov 17, 2026, aligned Wed Nov 18 to [`core-product.md`](core-product.md) (the spec: killer feature §2, core loop §3, functional spec §4, data model §5, positioning §6, methods and evidence §7, "Why this step" guidance §8). Companion to [`product-concept.md`](product-concept.md) (method §4, design §7, technical direction §8) and [`market-research.md`](market-research.md). Where the spec and this plan disagree, the spec wins.
 
 Julian's brief: build the app this week, launch on iOS and Android fast, and do not ship a bad version. It must resemble the final product: interview you as a user, draft the plan, a sleek interactive UI that shows your heading and goals, daily correction to keep you on course. Paper (paper.design) mockups before code; gstack skills in the workflow.
 
@@ -11,7 +11,7 @@ Two milestones:
 
 ## 1. v1 scope: five moments
 
-Method, counts and gates are concept §4 and spec §3; UI language is concept §7. v1 is exactly these five moments, voice-first, dark-first, both platforms from one codebase. The killer feature (spec §2) is the guide that holds the whole hierarchy in memory and answers the four questions out loud (why am I doing this, how should I prioritize, how do I stay on course, what should I work on now), every answer threaded to the user's words and ending in a next action. Moments (c) and (e) are where that conversation lives; (a), (b) and (d) feed and display it.
+Method, counts and gates are concept §4 and spec §3; UI language is concept §7. v1 is exactly these five moments, voice-first, dark-first, both platforms from one codebase. The killer feature (spec §2) is the guide that holds the whole hierarchy in memory and answers the four questions out loud (why am I doing this, how should I prioritize, how do I stay on course, what should I work on now), every answer threaded to the user's words and ending in a next action. Moments (c) and (e) are where that conversation lives; (a), (b) and (d) feed and display it. Cutting across all five: every interview step and every moment carries a "Why this step" note (one sentence, confidence tag, expandable to the source) from spec §8, and the guide names the method and confidence whenever it asks the user to do something (spec §2 rule 9). The product voice is plain and confident (spec §2 "Product voice"): what to do, why, how strong the evidence is; no mysticism, no outcome promises.
 
 ### (a) Voice interview onboarding → confirmed hierarchy
 
@@ -22,6 +22,7 @@ Method, counts and gates are concept §4 and spec §3; UI language is concept §
 - Distillation, level by level: the LLM proposes 10–12 life-goal candidates, each tagged to the scene passage it came from (quote shown under the goal). User edits, merges, deletes or re-records by voice, then confirms. Nothing proceeds until the level is confirmed.
 - Then 5 five-year goals (each names 1+ life goals), 3–5 one-year, 3 six-month, 3 monthly, 3 weekly priorities. Orphans are impossible by data model (NOT NULL parent, level ↔ parent-level check constraint) and by UI (parent picker is step one of creating anything).
 - Two "good way" gates from concept §4.3 on each 5-year and 1-year goal: want-vs-should and the body check.
+- Each interview step shows its "Why this step" line under the prompt (spec §8 rows "Interview: …"), and the guide's spoken line for that step includes the reason clause ("Answer out loud. Spoken answers are remembered better; strong evidence.").
 - Closing: the user reads their top three life-goal scenes aloud (stored for Morning Course), picks a review day and morning time; notifications scheduled. Home unlocks only after this.
 
 ### (b) The Plan view ("Week Weave")
@@ -45,6 +46,7 @@ Spec §3 step 2; "Daily Recall" in plan v0.1. Renamed because the job is to set 
 - Visual: the Scene Player from concept §7 for the whole ritual: near-empty screen, slow ambient motion, waveform, one large sentence of what is being spoken.
 - Always completable in 3 minutes with skips; every response is saved to the session and surfaces in the Weekly Review.
 - Never ends on the fantasy: obstacle and next action are mandatory (concept §5).
+- Each segment shows its "Why this step" line (spec §8 rows "Morning Course: …"); tapping it expands to the source without leaving the player.
 
 ### (d) Weekly Review (15 minutes)
 
@@ -52,6 +54,7 @@ Spec §3 step 2; "Daily Recall" in plan v0.1. Renamed because the job is to set 
 - The guide reads the monthly goals and asks for next week's three priorities one at a time. Each must attach to a monthly goal (parent picker first), then gets an if-then plan by voice.
 - A monthly goal with no priority for two consecutive weeks is flagged once, plainly, with the option to re-plan or let it dissolve.
 - Ends by redrawing the Week Weave and speaking the three priorities and what they serve back as one sentence.
+- "Why this step" lines on close-last-week, pick-three and if-then (spec §8 rows "Weekly Review: …").
 
 ### (e) Talk It Through (anytime, open conversation)
 
@@ -62,7 +65,7 @@ Spec §3 step 3 and the whole of spec §2. First-class in v1: this is the moment
 - Can write back: save a next action, move or drop a priority (parent picker still enforced), log a reframe. Every write is confirmed by voice before it lands.
 - Streamed STT → LLM → TTS with automatic end-of-speech detection; the user never taps to send. Text input available as fallback.
 - Visual: the orb (listening / thinking / speaking), the sentence being spoken, and the thread of whatever goal is in play lit beneath.
-- Rules enforced in the prompt and checked in QA: spec §2 "Rules the guide must obey" (thread to the user's words, end in a next action, no pure positive fantasy, challenge drift, no shame, bounded, never invent, not therapy).
+- Rules enforced in the prompt and checked in QA: spec §2 "Rules the guide must obey" (thread to the user's words, end in a next action, no pure positive fantasy, challenge drift, no shame, bounded, never invent, not therapy, cite the method). The guide may only cite methods and confidence levels present in `content/method-notes.json`; it never invents a study.
 
 ### Explicit non-goals for v1
 
@@ -86,12 +89,13 @@ Design runs Wed–Thu in Paper with a hard go/no-go Thursday noon ET before any 
 10. Weekly Review: last week's priorities, new slot with parent picker and if-then plan.
 11. Talk It Through: orb states, the spoken sentence, the lit thread of the goal in play, and the "save this next action" confirmation.
 
-Plus a system board: type scale, color tokens, orb states (idle, listening, speaking, thinking), notification copy, app icon.
+Plus a system board: type scale, color tokens, orb states (idle, listening, speaking, thinking), the "Why this step" component (one line, confidence tag as a small label: strong / moderate / emerging, expanded state showing the source), notification copy, app icon.
 
 ### Design language constraints (concept §7, made testable)
 
 - Dark-first, one luminous accent. Body type 17 pt minimum, one typeface family. Negative space over chrome; no tab bar over three items; no numbers on home.
 - Every screen has a voice state: the orb shows listening / speaking / thinking and the screen shows the sentence being spoken.
+- Every screen that asks the user to do something shows its "Why this step" line beneath the prompt, with the confidence tag; copy is plain and declarative (spec §2 "Product voice"), no metaphor.
 - Motion breathes (eased, 400–800 ms, tied to breath and speech), never bounces. Haptics only on breath cue, confirm and reframe.
 - No streaks, red, checkbox grids or guilt copy anywhere, including notifications.
 - Futuristic and calm, not sci-fi: no neon grids, no glass clutter. A quiet instrument, not a game.
@@ -110,7 +114,8 @@ gstack `/design-review` on the Paper board, then Julian decides. Go requires: al
 - **Backend:** Supabase. Auth (Sign in with Apple, email OTP), Postgres with RLS on every table, Storage for audio (private bucket, signed URLs), Edge Functions as the only path to LLM/STT/TTS providers (keys never ship in the app). Matches Julian's existing stack; one vendor to operate.
 - **Schema v0** (spec §5): `profiles` (name, review_day, morning_time), `scenes` (near_term | end_of_life, transcript, audio_path), `scene_passages` (scene_id, life_area, text, order), `goals` (level enum life → weekly, parent_id NOT NULL except life, scene_passage_id NOT NULL when life, text, source_quote, want_or_should, energizes, status active | dissolved, confirmed_at), `recordings` (target scene_passage | goal, audio_path, duration, transcript), `weekly_priorities` (goal_id → monthly, week_start, if_then, status, closing_sentence), `next_actions` (weekly_priority_id, text, due_at, session_id, status), `sessions` (kind interview | morning | talk | review | recalibration, transcript, summary, extracts jsonb), `reframes` (session_id, goal_id, thought, distortion, reframe, accepted, thought_family), `memory_facts` (key, value, source_session_id, user_edited). A check constraint enforces level ↔ parent level; a trigger rejects any priority or next action whose ancestry does not resolve to a scene passage.
 - **Memory model** (spec §2). The guide's memory is the database, not a vector store: hierarchy, scenes, recordings, sessions with extracts, weekly outcomes, reframes grouped into thought families, and context facts. An Edge Function `context_pack(user, question)` assembles per turn: the full hierarchy (small enough to send whole), the active week's priorities and outcomes, the last three sessions' extracts, reframes linked to any goal mentioned, and the top retrieved transcript turns (Postgres full-text in v1; embeddings only if retrieval quality demands it). Session extracts (decisions, commitments, next actions, questions) are produced by a structured-output call at session close and are what Talk It Through and Weekly Review read; raw transcripts are kept but rarely sent. The guide may only state facts present in the pack, and every cited goal or scene is quoted verbatim from its row.
-- **LLM:** one provider behind an Edge Function; JSON-schema structured outputs for every call (candidates with quote spans, parent suggestions, want-vs-should verdict, reframe object, session extracts, Talk It Through write-backs). Default Anthropic Sonnet-class, OpenAI as the swap. Prompts are versioned files in the repo, one per moment plus the shared rules block from spec §2; the user's edits always overwrite model text. Talk It Through streams tokens to TTS sentence by sentence.
+- **Method notes content:** `content/method-notes.json`, versioned in the repo, one entry per row of spec §8 (`step_key`, `method`, `note`, `confidence`, `source`, `source_url` where one exists). Rendered by a single `WhyThisStep` component; also injected into the guide's prompt for the active step so the spoken reason clause and the on-screen note never disagree. Changing a note is a content PR, not a code change.
+- **LLM:** one provider behind an Edge Function; JSON-schema structured outputs for every call (candidates with quote spans, parent suggestions, want-vs-should verdict, reframe object, session extracts, Talk It Through write-backs). Default Anthropic Sonnet-class, OpenAI as the swap. Prompts are versioned files in the repo, one per moment plus the shared rules block and product-voice guideline from spec §2; the user's edits always overwrite model text. Talk It Through streams tokens to TTS sentence by sentence.
 - **STT:** on-device `expo-speech-recognition` (iOS 17+ offline; Android on-device where available) for live transcript, with end-of-speech detection so Talk It Through never needs a send tap; `gpt-4o-transcribe`-class API as server fallback for long or noisy audio. Privacy and zero marginal cost on the primary path.
 - **TTS:** OpenAI TTS default (roughly $0.015 per minute of audio, streamed, a few hundred ms to first audio; fine for a scripted ritual and acceptable for conversation when streamed per sentence). ElevenLabs as the upgrade for a distinctive guide voice or later cloning (lower first-byte latency on Flash models, roughly 5–20× the cost per minute, cloning needs consent and a paid tier). Fixed guide lines are pre-rendered and bundled; user-specific lines are synthesized at confirm time and cached by text hash.
 - **Notifications:** `expo-notifications`, local scheduled only; no push server in v1.
@@ -124,7 +129,7 @@ gstack `/design-review` on the Paper board, then Julian decides. Go requires: al
 - No training on user data: API tiers that do not train by default (Anthropic, OpenAI, ElevenLabs), zero-retention where offered, stated in the privacy policy.
 - Delete-my-data: one tap in Settings removes account, rows, audio and provider caches (Apple 5.1.1(v); Google Play also requires a web deletion-request URL).
 - Disclose AI processing and named providers in onboarding, privacy policy, App Privacy and Data Safety answers; Apple's 2025 guidelines require consent before sharing personal data with third-party AI.
-- No health or medical claims in app or listing; the language is practice and planning.
+- No health or medical claims in app or listing; the language is practice and planning. Evidence claims follow spec §7 confidence labels exactly: "proven" only for strong-evidence techniques, "emerging" said as written, and no claim that the combination has been tested.
 
 ## 4. Day-by-day schedule
 
@@ -141,7 +146,7 @@ Owners: **A** = agents (Cursor cloud agents plus gstack skills, reviewed by Juli
 **Thu Nov 19 — Go/no-go, then the interview**
 
 - J: Paper screens 7–11 and system board by 11:00. A + J: `/design-review`, go/no-go at noon, tokens exported.
-- A: Interview script as versioned prompt files (every spoken line, follow-up rule, area order, distillation schemas, gate prompts), paced for ~45 minutes; dry-run read aloud once. Shared rules block (spec §2) and the Talk It Through prompt drafted the same day so the context-pack contract is fixed before schema work ends.
+- A: Interview script as versioned prompt files (every spoken line, follow-up rule, area order, distillation schemas, gate prompts), paced for ~45 minutes; dry-run read aloud once. Shared rules block and product-voice guideline (spec §2) and the Talk It Through prompt drafted the same day so the context-pack contract is fixed before schema work ends. `content/method-notes.json` authored verbatim from spec §8 and the `WhyThisStep` component built against it.
 - A: Moment (a): permissions, interview screens, live transcript, resumable persistence, Sign in with Apple and email OTP. `/plan-eng-review` on schema, `context_pack` and Edge Function contracts.
 - J: Evening, complete the interview on the dev build with his real content.
 
@@ -155,7 +160,7 @@ Owners: **A** = agents (Cursor cloud agents plus gstack skills, reviewed by Juli
 **Sat Nov 21 — Morning Course, Weekly Review, Talk It Through, first builds**
 
 - A: Moment (c): ritual engine (speak → listen → save → next), Scene Player, catch and reframe, correction prompt, notification deep link. Moment (d): review flow, two-week flag, if-then capture, redraw and read-back. Moment (e): orb entry, lit thread, write-backs, five-minute bound.
-- A: `/qa` pass 1 on both platforms, including a scripted Talk It Through transcript set (one per question, plus a drift case and a shame-bait case) checked against the spec §2 rules; fixes triaged must/should/later.
+- A: `/qa` pass 1 on both platforms, including a scripted Talk It Through transcript set (one per question, plus a drift case and a shame-bait case) checked against the spec §2 rules, and a walk of every interview step and moment confirming its "Why this step" note is present, expands to its source, and matches the spoken reason clause; fixes triaged must/should/later.
 - A: EAS production builds to TestFlight internal (no Beta App Review needed) and Google Play internal testing: "launch this week" build 1.
 - J: Install as user zero on both platforms; run Morning Course Saturday evening for real and one Talk It Through when actually stuck; file issues by voice.
 
@@ -163,7 +168,7 @@ Owners: **A** = agents (Cursor cloud agents plus gstack skills, reviewed by Juli
 
 - J: Morning Course in the morning, Weekly Review at his chosen time: the full loop runs once, end to end.
 - A: Parity pass against Paper screen by screen; motion and haptics; empty, error and offline states; Android pass (back gesture, audio focus, notification channels); `/design-review` round 2.
-- A: Store assets from the real app: icon, iPhone and Android screenshots, descriptions written to spec §6 (headline "Stay on course to the life you chose", sub-line "Become who you set out to be", subtitle on what the guide does, and "Course, not streaks" said plainly; no manifestation or future-self framing), privacy-policy page live with the deletion URL, App Privacy and Data Safety answers for Julian's approval.
+- A: Store assets from the real app: icon, iPhone and Android screenshots, descriptions written to spec §6 (headline "Set goals the proven way. Stay on course every day.", second line "Every step shows why it works and how strong the evidence is.", and "No streaks. A missed day gets a correction, not a penalty." said plainly; matter-of-fact register, no manifestation or future-self framing, no outcome promises), privacy-policy page live with the deletion URL, App Privacy and Data Safety answers for Julian's approval.
 - A: `/cso` pass on RLS, Edge Function auth and keys; delete-my-data verified end to end; `/ios-qa` on a physical iPhone against §7.
 
 **Mon Nov 23 — Gate, ship, submit (launch milestone)**
@@ -209,7 +214,7 @@ All critical path; only Julian can do these.
 
 ## 7. Definition of "resembles the final product"
 
-Submission is gated on all eleven, checked Monday 10:00 on real devices on both platforms, by someone other than the builder.
+Submission is gated on all twelve, checked Monday 10:00 on real devices on both platforms, by someone other than the builder.
 
 1. A new user completes the voice interview and confirms every level without typing, in about 45 minutes, and can stop and resume at any question; nothing is saved without a parent.
 2. Every goal and priority is in the user's words, with its ideal-scene sentence one tap away.
@@ -222,5 +227,6 @@ Submission is gated on all eleven, checked Monday 10:00 on real devices on both 
 9. Zero crashes in `/qa` pass 2 and in Julian's last three sessions; no unhandled Sentry errors from testers in 24 hours; cold start under 2 s on both test devices.
 10. Plan view and Morning Course playback work offline with cached audio; the interview resumes exactly where it stopped after a force quit.
 11. Privacy complete: RLS negative test passes, delete-my-data verified end to end, privacy policy and deletion URL live, App Privacy and Data Safety answers match the app, AI processing disclosed in onboarding.
+12. Every interview step and every moment shows its "Why this step" note with the confidence tag from spec §8, expands to the source, and the guide's spoken reason clause matches it; no copy anywhere overclaims beyond the spec §7 labels.
 
-Resembling the final product does not mean every concept-doc feature; it means the five moments feel finished, sound like the user, keep them on course, and look like the Paper board. Anything failing a line above is fixed or cut on Monday, and we submit what passes.
+Resembling the final product does not mean every concept-doc feature; it means the five moments feel finished, sound like the user, keep them on course, show the reason for every step, and look like the Paper board. Anything failing a line above is fixed or cut on Monday, and we submit what passes.

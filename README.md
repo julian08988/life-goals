@@ -7,7 +7,7 @@ Most people do not fail at goals because they lack a list; they fail because the
 ## Documents
 
 - [Product concept](docs/product-concept.md) — vision, target user, the goal-setting method, the neuroplasticity and anti-negative-self-talk layer, core loops, design direction, technical direction, and open questions.
-- [Core product spec](docs/core-product.md) — the killer feature (a voice guide that holds your whole hierarchy and keeps you on course), the core loop, functional spec, data model, positioning, and what v1 is not.
+- [Core product spec](docs/core-product.md) — the killer feature (a voice guide that holds your whole hierarchy and keeps you on course), the core loop, functional spec, data model, positioning, the methods and evidence behind each step, the "Why this step" content table, and what v1 is not.
 - [Build plan, week 1](docs/build-plan.md) — v1 scope (five moments), design-first sequence in Paper, stack and memory model, day-by-day schedule Nov 18–24, Julian's to-do list, risks and cuts, and the quality bar for submission.
 
 ## Working method
