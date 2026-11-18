@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>06 Talk It Through</title>
+<link rel="stylesheet" href="../shared.css" />
+<style>
+  .content { gap: 10px; }
+  .user { align-self: flex-end; max-width: 86%; background: var(--color-surface); border-radius: 20px 20px 6px 20px; padding: 12px 16px; color: var(--color-text-muted); }
+  .answer { display: flex; gap: 14px; align-items: flex-start; }
+  .answer .halo { margin-top: 2px; }
+  .answer .q { color: var(--color-text); }
+  .answer .q em { font-style: normal; color: var(--color-accent); }
+  .next { border: 1px solid var(--color-hairline-strong); border-radius: var(--radius-lg); padding: 10px 16px 14px; display: flex; flex-direction: column; gap: 8px; background: rgba(159,211,255,0.04); }
+  .next .row .label { color: var(--color-accent); }
+  .lit { display: flex; align-items: center; gap: 6px; }
+  .lit .micro { color: var(--color-text-faint); white-space: nowrap; }
+  .lit .micro.on { color: var(--color-text); }
+  .lit .sep { width: 8px; height: 1px; background: var(--color-thread); flex: none; }
+  .lit .sep.off { background: var(--color-hairline-strong); }
+  .next .act { display: flex; align-items: center; justify-content: space-between; margin-top: 2px; }
+  .composer { display: flex; flex-direction: column; gap: 10px; padding-bottom: 8px; }
+  .composer .chip { height: 30px; font-size: 12px; padding: 0 12px; }
+  .composer .in { display: flex; gap: 12px; align-items: center; }
+</style>
+</head>
+<body>
+<div class="device">
+  <div class="ambient"></div>
+  <div class="status"><span>9:41</span><div class="island"></div><div class="right"><span class="cell"><i style="height:4px"></i><i style="height:6px"></i><i style="height:8px"></i><i style="height:11px"></i></span><span class="wifi"></span><span class="battery"></span></div></div>
+
+  <div class="content with-tabs">
+    <div class="eyebrow">
+      <span class="label">Talk it through</span>
+      <span class="btn ghost compact" style="margin-right:-12px">New talk</span>
+    </div>
+
+    <div class="user body">Forty minutes. What do I do?</div>
+
+    <div class="answer">
+      <div class="halo small" data-state="speaking"></div>
+      <p class="body q">The retainer email, for <em>“Three discovery calls with past clients about a retainer.”</em> Forty minutes covers the draft and two sends. Say the first sentence out loud now; a step said aloud is easier to start. Strong evidence.</p>
+    </div>
+
+    <div class="next">
+      <div class="row"><span class="label">Next action · by 11:00</span><span class="btn primary compact">Add to week</span></div>
+      <span class="body">Draft the retainer email and send it to the first two clients.</span>
+      <div class="lit">
+        <span class="micro on">Today</span><span class="sep"></span>
+        <span class="micro on">Week</span><span class="sep"></span>
+        <span class="micro on">Month</span><span class="sep off"></span>
+        <span class="micro">6 mo</span><span class="sep off"></span>
+        <span class="micro">1 yr</span><span class="sep off"></span>
+        <span class="micro">5 yr</span><span class="sep"></span>
+        <span class="micro on">Life</span>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="why">
+      <span class="small">Every talk ends in one step with a time. Decided steps get done.</span>
+      <span class="tag strong">Strong</span>
+    </div>
+
+    <div class="composer">
+      <div class="chips">
+        <span class="chip">Why?</span>
+        <span class="chip">Which first?</span>
+        <span class="chip">On course</span>
+        <span class="chip on">Now</span>
+      </div>
+      <div class="in">
+        <div class="mic"><span class="micro">Mic</span></div>
+        <div class="input">Say it.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab"><i></i><span class="label">Today</span></div>
+    <div class="tab on"><i></i><span class="label">Talk</span></div>
+    <div class="tab"><i></i><span class="label">Week</span></div>
+  </div>
+  <div class="home"></div>
+</div>
+</body>
+</html>

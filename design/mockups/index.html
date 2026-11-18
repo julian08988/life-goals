@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Life Goals — v1 mockups</title>
+<link rel="stylesheet" href="./shared.css" />
+<style>
+  html, body { background: #040507; }
+  #board { display: inline-flex; flex-direction: column; gap: 28px; padding: 48px 56px 56px; background: #040507; }
+  .head { display: flex; align-items: baseline; justify-content: space-between; gap: 32px; }
+  .head .title { color: var(--color-text); }
+  .head .small { color: var(--color-text-faint); }
+  .screens { display: flex; gap: 40px; align-items: flex-start; }
+  .shot { display: flex; flex-direction: column; gap: 14px; width: 393px; }
+  .shot iframe { width: 393px; height: 852px; border: 0; display: block; border-radius: 44px; background: var(--color-background); box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 30px 80px rgba(0,0,0,0.6); }
+  .shot .cap { display: flex; flex-direction: column; gap: 3px; padding: 0 6px; }
+  .shot .cap .body { color: var(--color-text); }
+  .shot .cap .small { color: var(--color-text-faint); }
+</style>
+</head>
+<body>
+<div id="board">
+  <div class="head">
+    <span class="title">Life Goals · v1 mockups</span>
+    <span class="small">iPhone 15 Pro · 393 × 852 · dark · one accent · Inter · tokens in design/mockups/tokens.json</span>
+  </div>
+  <div class="screens">
+    <div class="shot"><iframe src="./screens/01-welcome.html"></iframe><div class="cap"><span class="body">1 · Welcome</span><span class="small">Headline, the first spoken line, the empty thread.</span></div></div>
+    <div class="shot"><iframe src="./screens/02-interview-listening.html"></iframe><div class="cap"><span class="body">2 · Interview, ideal scene</span><span class="small">Halo listening; live transcript in the user's words.</span></div></div>
+    <div class="shot"><iframe src="./screens/03-interview-distill.html"></iframe><div class="cap"><span class="body">3 · Interview, life goals</span><span class="small">Candidates tied to the sentence they came from.</span></div></div>
+    <div class="shot"><iframe src="./screens/04-morning-course.html"></iframe><div class="cap"><span class="body">4 · Morning Course</span><span class="small">Scene Player: one sentence, the halo speaking, the thread to today.</span></div></div>
+    <div class="shot"><iframe src="./screens/05-thread.html"></iframe><div class="cap"><span class="body">5 · Week Weave, thread open</span><span class="small">Today's action up to the life goal and the scene sentence.</span></div></div>
+    <div class="shot"><iframe src="./screens/06-talk.html"></iframe><div class="cap"><span class="body">6 · Talk It Through</span><span class="small">Guide answers from the user's own goals; one next action.</span></div></div>
+    <div class="shot"><iframe src="./screens/07-weekly-review.html"></iframe><div class="cap"><span class="body">7 · Weekly Review</span><span class="small">Done, carried, dropped. Neutral. No counts.</span></div></div>
+    <div class="shot"><iframe src="./screens/08-settings.html"></iframe><div class="cap"><span class="body">8 · Settings</span><span class="small">Demo data toggle; what the guide knows.</span></div></div>
+  </div>
+</div>
+</body>
+</html>
