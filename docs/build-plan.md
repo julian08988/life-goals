@@ -2,7 +2,7 @@
 
 Status: plan v0.3, written Tue Nov 17, 2026, aligned Wed Nov 18 to [`core-product.md`](core-product.md) (the spec: killer feature §2, core loop §3, functional spec §4, data model §5, positioning §6, methods and evidence §7, "Why this step" guidance §8). Companion to [`product-concept.md`](product-concept.md) (method §4, design §7, technical direction §8) and [`market-research.md`](market-research.md). Where the spec and this plan disagree, the spec wins.
 
-Julian's brief: build the app this week, launch on iOS and Android fast, and do not ship a bad version. It must resemble the final product: interview you as a user, draft the plan, a sleek interactive UI that shows your heading and goals, daily correction to keep you on course. Paper (paper.design) mockups before code; gstack skills in the workflow.
+Julian's brief: build the app this week, launch on iOS and Android fast, and do not ship a bad version. It must resemble the final product: interview you as a user, draft the plan, a sleek interactive UI that shows your goals and where you stand, daily correction to keep you on course. Paper (paper.design) mockups before code; gstack skills in the workflow.
 
 Two milestones:
 
@@ -37,7 +37,7 @@ Method, counts and gates are concept §4 and spec §3; UI language is concept §
 
 ### (c) Morning Course ritual (3 minutes, voice-guided)
 
-Spec §3 step 2; "Daily Recall" in plan v0.1. Renamed because the job is to set today's heading and correct yesterday's drift, not to reminisce.
+Spec §3 step 2; "Daily Recall" in plan v0.1. Renamed because the job is to set today's priority and correct yesterday's drift, not to look back.
 
 - Local notification at the chosen time, also from home. Hands-free once started: the guide speaks, pauses for responses, resumes.
 - Fixed script, variable content: 20 s settling breath with haptic pulse → one life goal and one 5-year goal spoken back in the user's own words (own recording when available, else TTS) → today's priority step → process imagery ("walk through the first two minutes of doing it") → one obstacle and if-then plan, spoken by the user and saved.
