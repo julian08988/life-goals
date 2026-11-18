@@ -93,7 +93,9 @@ export interface AppState extends Data {
     heading: string | null;
     headingActionId: string | null;
     firstStep: string | null;
+    obstaclePlan: string | null;
     correction: string | null;
+    innerCriticNote: string | null;
   }) => void;
   closeDay: (date: string, closingNote: string | null) => void;
 
@@ -267,7 +269,7 @@ export function createAppStore(repository: StateRepository) {
           });
         },
 
-        startDay: ({ date, heading, headingActionId, firstStep, correction }) => {
+        startDay: ({ date, heading, headingActionId, firstStep, obstaclePlan, correction, innerCriticNote }) => {
           const existing = get().days[date];
           const record: DayRecord = {
             date,
@@ -275,7 +277,9 @@ export function createAppStore(repository: StateRepository) {
             heading,
             headingActionId,
             firstStep,
+            obstaclePlan,
             correction,
+            innerCriticNote,
             closedAt: existing?.closedAt ?? null,
             closingNote: existing?.closingNote ?? null,
           };
@@ -289,7 +293,9 @@ export function createAppStore(repository: StateRepository) {
             heading: null,
             headingActionId: null,
             firstStep: null,
+            obstaclePlan: null,
             correction: null,
+            innerCriticNote: null,
             closedAt: null,
             closingNote: null,
           };

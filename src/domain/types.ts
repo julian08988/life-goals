@@ -93,8 +93,12 @@ export interface DayRecord {
   headingActionId: string | null;
   /** First two minutes of the heading action. */
   firstStep: string | null;
+  /** The obstacle and the if-then plan for it (WOOP). */
+  obstaclePlan: string | null;
   /** Smallest step back on course, if yesterday slipped. */
   correction: string | null;
+  /** Optional self-talk layer: what the inner critic said, if the user chose to say. */
+  innerCriticNote: string | null;
   closedAt: string | null;
   /** End-of-day sentence: "what did you do today the future you would recognize?" */
   closingNote: string | null;
