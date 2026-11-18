@@ -23,6 +23,11 @@ interface LevelStepProps {
   config: LevelStepConfig;
   onBack: () => void;
   onNext: () => void;
+  /** Week level only: which week the priorities belong to. Defaults to the current week. */
+  weekStart?: string;
+  nextLabel?: string;
+  /** Rendered above the form (for example neglect flags in Weekly Review). */
+  notice?: React.ReactNode;
 }
 
 const SAMPLE = 'The first retainer client is signed and the work is on my terms.';
@@ -31,11 +36,17 @@ const SAMPLE = 'The first retainer client is signed and the work is on my terms.
  * One hierarchy level: pick the parent, say the goal, run the body check where the
  * method asks for it, add the if-then plan at week level. Parent first; no orphans.
  */
-export function LevelStep({ config, onBack, onNext }: LevelStepProps) {
+export function LevelStep({
+  config,
+  onBack,
+  onNext,
+  weekStart = weekStartOf(todayISO()),
+  nextLabel = 'Continue',
+  notice,
+}: LevelStepProps) {
   const state = useAppStore();
   const parentLevel = PARENT_LEVEL[config.level];
   const parents = parentLevel ? activeGoalsAtLevel(state, parentLevel) : [];
-  const weekStart = weekStartOf(todayISO());
   const goals = activeGoalsAtLevel(state, config.level).filter(
     (g) => config.level !== 'week' || g.weekStart === weekStart,
   );
@@ -77,6 +88,7 @@ export function LevelStep({ config, onBack, onNext }: LevelStepProps) {
       say={voice.say}
       speaking={voice.speaking}
       onStop={voice.hush}>
+      {notice}
       {goals.length > 0 ? (
         <View style={styles.group}>
           {goals.map((g) => (
@@ -155,7 +167,7 @@ export function LevelStep({ config, onBack, onNext }: LevelStepProps) {
 
       <View style={styles.nav}>
         <Button label="Back" kind="ghost" compact onPress={onBack} />
-        <Button label="Continue" onPress={onNext} disabled={goals.length < target.min} compact />
+        <Button label={nextLabel} onPress={onNext} disabled={goals.length < target.min} compact />
       </View>
     </StepFrame>
   );
