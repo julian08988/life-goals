@@ -1,0 +1,314 @@
+{
+  "version": "2026-11-18",
+  "sourceDoc": "docs/core-product.md §7 and §8",
+  "methods": [
+    {
+      "id": "speaking_aloud",
+      "name": "Speaking goals aloud (production effect, self-explanation)",
+      "userDoes": "Answers the interview and confirms each goal by saying it",
+      "why": "Words spoken aloud are remembered better than words read silently; explaining a goal in your own words exposes vague ones",
+      "confidence": "strong",
+      "confidenceDetail": "Strong for memory; moderate for goal pursuit",
+      "source": "MacLeod et al. 2010; Chi et al. 1989; Bisra et al. 2018 meta-analysis"
+    },
+    {
+      "id": "writing_down",
+      "name": "Writing goals down and reporting progress",
+      "userDoes": "Hierarchy is saved in the user's words; weekly outcomes recorded",
+      "why": "Written, specific goals with progress reports outperformed unwritten goals in a 4-week study; the effect is commitment and accountability more than the ink",
+      "confidence": "moderate",
+      "confidenceDetail": "Matthews 2015: n=267, self-report, four weeks, not a large replicated trial. The \"Harvard 3% study\" is a myth",
+      "source": "Matthews 2015 (Dominican University); Locke & Latham 2002 for goal specificity (strong)"
+    },
+    {
+      "id": "proximal_subgoals",
+      "name": "Proximal subgoals (goal hierarchy)",
+      "userDoes": "Every goal has a parent; weekly priorities thread to monthly goals",
+      "why": "Near-term subgoals tied to a distal goal raise persistence and self-efficacy more than distal goals alone",
+      "confidence": "strong",
+      "confidenceDetail": null,
+      "source": "Bandura & Schunk 1981; Locke & Latham 2002"
+    },
+    {
+      "id": "self_concordant",
+      "name": "Self-concordant goals (want vs should)",
+      "userDoes": "Answers \"desire or should?\" and \"does saying it energize or drain you?\"",
+      "why": "Goals pursued for autonomous reasons get sustained effort and better attainment than goals pursued from pressure",
+      "confidence": "moderate",
+      "confidenceDetail": null,
+      "source": "Sheldon & Elliot 1999; Koestner et al. 2002"
+    },
+    {
+      "id": "implementation_intentions",
+      "name": "Implementation intentions",
+      "userDoes": "States an if-then plan for each weekly priority and each next action",
+      "why": "Pre-deciding when, where and how an action happens makes the cue trigger it; d ≈ 0.65 across 94 studies",
+      "confidence": "strong",
+      "confidenceDetail": null,
+      "source": "Gollwitzer 1999; Gollwitzer & Sheeran 2006"
+    },
+    {
+      "id": "woop",
+      "name": "Mental contrasting with implementation intentions (WOOP)",
+      "userDoes": "Names the wish, imagines the outcome, names the obstacle, plans the step",
+      "why": "Contrasting the wish with the obstacle converts fantasy into effort; positive fantasy alone lowers energy",
+      "confidence": "strong",
+      "confidenceDetail": "Strong for MCII (g ≈ 0.34); strong for the fantasy warning",
+      "source": "Oettingen 2012; Kappes & Oettingen 2011; Wang et al. 2021 meta-analysis"
+    },
+    {
+      "id": "process_simulation",
+      "name": "Process vs outcome simulation",
+      "userDoes": "Walks through the first two minutes of today's step rather than the finished result",
+      "why": "Rehearsing the process raised studying and grades; rehearsing the outcome did not",
+      "confidence": "moderate",
+      "confidenceDetail": null,
+      "source": "Pham & Taylor 1999; Taylor et al. 1998"
+    },
+    {
+      "id": "retrieval_practice",
+      "name": "Retrieval practice and spacing",
+      "userDoes": "Hears one life goal and one 5-year goal each morning on a rotating schedule and says the thread back",
+      "why": "Recalling an item strengthens it more than re-reading it; spacing the recalls beats massing them",
+      "confidence": "strong",
+      "confidenceDetail": "Strong for memory; moderate for keeping goals salient",
+      "source": "Roediger & Karpicke 2006; Cepeda et al. 2006; Dunlosky et al. 2013"
+    },
+    {
+      "id": "distanced_self_talk",
+      "name": "Distanced self-talk",
+      "userDoes": "Reframes a negative thought in the third person or by name",
+      "why": "Addressing yourself by name regulates emotion without extra cognitive effort",
+      "confidence": "moderate",
+      "confidenceDetail": null,
+      "source": "Kross et al. 2014; Moser et al. 2017; Orvell et al. 2021"
+    },
+    {
+      "id": "cognitive_restructuring",
+      "name": "Cognitive restructuring (labeling distortions)",
+      "userDoes": "Hears the distortion named and offers a believable alternative",
+      "why": "Core CBT technique; identifying the distortion weakens its automaticity",
+      "confidence": "strong",
+      "confidenceDetail": null,
+      "source": "Beck 1979; Hofmann et al. 2012 meta-analysis"
+    },
+    {
+      "id": "self_compassion",
+      "name": "Self-compassion after setbacks",
+      "userDoes": "Closes a missed priority with one neutral sentence and a correction",
+      "why": "Self-compassion after failure increases motivation to improve and persistence; self-criticism reduces both",
+      "confidence": "moderate",
+      "confidenceDetail": null,
+      "source": "Breines & Chen 2012; Neff 2003; Ferrari et al. 2019 meta-analysis"
+    },
+    {
+      "id": "self_affirmation",
+      "name": "Self-affirmation (values)",
+      "userDoes": "End-of-life scene and the monthly \"why this goal matters to who I am\"",
+      "why": "Writing about core values buffers identity threat and improves follow-through in some settings; large-scale replications are mixed",
+      "confidence": "moderate",
+      "confidenceDetail": null,
+      "source": "Cohen & Sherman 2014; Hanselman et al. 2017 (mixed)"
+    },
+    {
+      "id": "own_voice",
+      "name": "Own-voice playback",
+      "userDoes": "Records three scenes and hears them in Morning Course",
+      "why": "Hearing your own voice state a goal is rated more believable than a stranger's; a self-reference effect is plausible",
+      "confidence": "emerging",
+      "confidenceDetail": "Review evidence (ThinkUp, Stella) and self-reference memory effects, no direct trial",
+      "source": "Symons & Johnson 1997 (self-reference); market research §3.8"
+    },
+    {
+      "id": "mental_rehearsal",
+      "name": "Mental rehearsal and \"cells that fire together wire together\"",
+      "userDoes": "Rehearses the step as the person who already does it",
+      "why": "Mental practice improves later performance, mostly on cognitive tasks, and is weaker than physical practice; the Hebbian line is a popular framing of synaptic plasticity, not a goal-pursuit finding. Dispenza's broader claims (elevated emotion changing biology) are not established",
+      "confidence": "emerging",
+      "confidenceDetail": "Emerging / mixed. Moderate for mental practice itself",
+      "source": "Hebb 1949; Pascual-Leone et al. 1995; Driskell et al. 1994 meta-analysis; concept §5"
+    }
+  ],
+  "notes": [
+    {
+      "key": "interview.opening",
+      "moment": "Interview: opening",
+      "methodIds": ["speaking_aloud"],
+      "note": "Answer out loud. Spoken answers are remembered better and expose vague goals.",
+      "confidence": "strong",
+      "confidenceDetail": null,
+      "source": "MacLeod 2010; Chi 1989"
+    },
+    {
+      "key": "interview.near_term_scene",
+      "moment": "Interview: near-term scene",
+      "methodIds": ["process_simulation", "woop"],
+      "note": "Describe a concrete day, not a result. Concrete scenes become plans; vague wishes do not.",
+      "confidence": "moderate",
+      "confidenceDetail": null,
+      "source": "Pham & Taylor 1999; Oettingen 2012"
+    },
+    {
+      "key": "interview.end_of_life_scene",
+      "moment": "Interview: end-of-life scene",
+      "methodIds": ["self_affirmation"],
+      "note": "This names what matters to you. Stating core values helps you hold to them under pressure.",
+      "confidence": "moderate",
+      "confidenceDetail": null,
+      "source": "Cohen & Sherman 2014"
+    },
+    {
+      "key": "interview.life_goals",
+      "moment": "Interview: life-goal distillation",
+      "methodIds": ["writing_down"],
+      "note": "Each goal is saved in your words and tied to your own sentence. Written, specific goals are acted on more.",
+      "confidence": "moderate",
+      "confidenceDetail": null,
+      "source": "Matthews 2015; Locke & Latham 2002"
+    },
+    {
+      "key": "interview.parent_picker",
+      "moment": "Interview: parent picker",
+      "methodIds": ["proximal_subgoals"],
+      "note": "Every goal needs a parent. Near goals tied to far goals keep you going longer.",
+      "confidence": "strong",
+      "confidenceDetail": null,
+      "source": "Bandura & Schunk 1981"
+    },
+    {
+      "key": "interview.want_vs_should",
+      "moment": "Interview: want vs should, body check",
+      "methodIds": ["self_concordant"],
+      "note": "Goals you want outlast goals you should. Say it; if it drains you, rewrite it.",
+      "confidence": "moderate",
+      "confidenceDetail": null,
+      "source": "Sheldon & Elliot 1999"
+    },
+    {
+      "key": "interview.week",
+      "moment": "Interview: weekly priorities",
+      "methodIds": ["implementation_intentions"],
+      "note": "Add when and where. If-then plans roughly double follow-through.",
+      "confidence": "strong",
+      "confidenceDetail": null,
+      "source": "Gollwitzer & Sheeran 2006"
+    },
+    {
+      "key": "interview.record_scenes",
+      "moment": "Interview: record three scenes",
+      "methodIds": ["own_voice"],
+      "note": "Record it yourself. People rate goals in their own voice as more believable.",
+      "confidence": "emerging",
+      "confidenceDetail": null,
+      "source": "Market research §3.8; Symons & Johnson 1997"
+    },
+    {
+      "key": "morning.hear_goals",
+      "moment": "Morning Course: hear two goals",
+      "methodIds": ["retrieval_practice"],
+      "note": "Say the thread back. Recalling a goal keeps it active; re-reading does not.",
+      "confidence": "strong",
+      "confidenceDetail": null,
+      "source": "Roediger & Karpicke 2006"
+    },
+    {
+      "key": "morning.first_two_minutes",
+      "moment": "Morning Course: first two minutes",
+      "methodIds": ["process_simulation"],
+      "note": "Picture the first two minutes, not the finish. Process rehearsal raises follow-through.",
+      "confidence": "moderate",
+      "confidenceDetail": null,
+      "source": "Pham & Taylor 1999"
+    },
+    {
+      "key": "morning.obstacle_if_then",
+      "moment": "Morning Course: obstacle and if-then",
+      "methodIds": ["woop"],
+      "note": "Name the obstacle, then the plan. Wish plus obstacle plus plan beats wishing alone.",
+      "confidence": "strong",
+      "confidenceDetail": null,
+      "source": "Oettingen 2012; Wang 2021"
+    },
+    {
+      "key": "morning.reframe",
+      "moment": "Morning Course: reframe",
+      "methodIds": ["distanced_self_talk", "cognitive_restructuring"],
+      "note": "Use your name. Talking to yourself by name lowers the heat without extra effort.",
+      "confidence": "moderate",
+      "confidenceDetail": null,
+      "source": "Kross 2014"
+    },
+    {
+      "key": "morning.correction",
+      "moment": "Morning Course: correction after a miss",
+      "methodIds": ["self_compassion"],
+      "note": "A miss gets a step, not a verdict. Self-compassion after failure raises persistence.",
+      "confidence": "moderate",
+      "confidenceDetail": null,
+      "source": "Breines & Chen 2012"
+    },
+    {
+      "key": "talk.opening",
+      "moment": "Talk It Through: opening",
+      "methodIds": ["speaking_aloud"],
+      "note": "Say the problem out loud. Explaining it exposes the real question.",
+      "confidence": "moderate",
+      "confidenceDetail": null,
+      "source": "Chi 1989"
+    },
+    {
+      "key": "talk.closing",
+      "moment": "Talk It Through: closing",
+      "methodIds": ["implementation_intentions"],
+      "note": "Every talk ends in one step with a time. Decided steps get done.",
+      "confidence": "strong",
+      "confidenceDetail": null,
+      "source": "Gollwitzer 1999"
+    },
+    {
+      "key": "review.close_week",
+      "moment": "Weekly Review: close last week",
+      "methodIds": ["self_compassion"],
+      "note": "One sentence per priority, no guilt. Neutral review keeps you in the game.",
+      "confidence": "moderate",
+      "confidenceDetail": null,
+      "source": "Breines & Chen 2012"
+    },
+    {
+      "key": "review.pick_three",
+      "moment": "Weekly Review: pick three",
+      "methodIds": ["proximal_subgoals"],
+      "note": "Three priorities, each tied to a monthly goal. Subgoals with a parent get done.",
+      "confidence": "strong",
+      "confidenceDetail": null,
+      "source": "Bandura & Schunk 1981"
+    },
+    {
+      "key": "review.if_then",
+      "moment": "Weekly Review: if-then plans",
+      "methodIds": ["implementation_intentions"],
+      "note": "Say when and where. If-then plans roughly double follow-through.",
+      "confidence": "strong",
+      "confidenceDetail": null,
+      "source": "Gollwitzer & Sheeran 2006"
+    },
+    {
+      "key": "monthly.recalibration",
+      "moment": "Monthly Recalibration",
+      "methodIds": [],
+      "note": "Rewrite or drop stale goals. Letting go of unreachable goals and re-engaging protects effort and wellbeing.",
+      "confidence": "moderate",
+      "confidenceDetail": null,
+      "source": "Wrosch et al. 2003"
+    },
+    {
+      "key": "scene.playback",
+      "moment": "Scene playback (anywhere)",
+      "methodIds": ["mental_rehearsal", "woop"],
+      "note": "Rehearse, then plan. Picturing the result alone lowers effort; always end with the obstacle and the step.",
+      "confidence": "strong",
+      "confidenceDetail": "Strong for the warning; emerging for rehearsal",
+      "source": "Kappes & Oettingen 2011; Driskell 1994"
+    }
+  ]
+}
