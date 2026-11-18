@@ -32,19 +32,18 @@ export function LifeGoalsStep({ onBack, onNext }: LifeGoalsStepProps) {
   const passages = allPassages(state);
   const [candidates, setCandidates] = useState<LifeGoalCandidate[] | null>(saved.length > 0 ? [] : null);
   const [draft, setDraft] = useState('');
-  const [loading, setLoading] = useState(false);
+  const loading = candidates === null;
 
   useEffect(() => {
     if (candidates !== null) return;
     let cancelled = false;
-    setLoading(true);
     guide
       .distillLifeGoals(passages)
       .then((c) => {
         if (!cancelled) setCandidates(c);
       })
-      .finally(() => {
-        if (!cancelled) setLoading(false);
+      .catch(() => {
+        if (!cancelled) setCandidates([]);
       });
     return () => {
       cancelled = true;
