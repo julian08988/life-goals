@@ -29,31 +29,40 @@ const base = `http://127.0.0.1:${server.address().port}`;
 // Screens in journey order. `done=1` renders the end state of screens that animate.
 const SCREENS = [
   ['01-welcome', '/welcome'],
-  ['02-interview-scene-work', '/interview/scene/1?done=1'],
-  ['03-interview-scene-relationships', '/interview/scene/2?done=1'],
-  ['04-interview-scene-body', '/interview/scene/3?done=1'],
-  ['05-interview-life-goals', '/interview/life-goals'],
-  ['06-interview-5-year', '/interview/level/five_year'],
-  ['07-interview-1-year', '/interview/level/one_year'],
-  ['08-interview-6-month', '/interview/level/six_month'],
-  ['09-interview-month', '/interview/level/month'],
-  ['10-interview-week', '/interview/level/week'],
-  ['11-interview-map-set', '/interview/set'],
-  ['12-map-home', '/map'],
-  ['13-life-goal-thread', '/thread/L1'],
-  ['14-life-goals-document', '/document'],
-  ['15-morning-hear', '/morning/1'],
-  ['16-morning-correction', '/morning/2'],
-  ['17-morning-heading', '/morning/3?done=1'],
-  ['18-morning-obstacle', '/morning/4'],
-  ['19-morning-set', '/morning/5'],
-  ['20-week', '/week'],
-  ['21-talk', '/talk'],
-  ['22-talk-answer', '/talk/now'],
-  ['23-review-close', '/review/1'],
-  ['24-review-pick-orphan-gate', '/review/2'],
-  ['25-review-set', '/review/3'],
-  ['26-settings', '/settings'],
+  ['02-interview-start', '/interview/start'],
+  ['03-interview-listening', '/interview/scene/1?live=1'],
+  ['04-interview-scene-work', '/interview/scene/1?done=1'],
+  ['05-interview-scene-relationships', '/interview/scene/2?done=1'],
+  ['06-interview-scene-body', '/interview/scene/3?done=1'],
+  ['07-interview-life-goals-lanes', '/interview/life-goals'],
+  ['08-interview-10-year', '/interview/level/ten_year'],
+  ['09-interview-5-year', '/interview/level/five_year'],
+  ['10-interview-1-year', '/interview/level/one_year'],
+  ['11-interview-month', '/interview/level/month'],
+  ['12-interview-month-editing', '/interview/level/month?edit=1'],
+  ['13-interview-week', '/interview/level/week'],
+  ['14-interview-map-set', '/interview/set'],
+  ['15-map-home-life', '/map'],
+  ['16-map-horizon-week', '/map/week'],
+  ['17-goal-in-focus', '/goal/L1/week'],
+  ['18-record', '/document'],
+  ['19-morning-hear', '/morning/1'],
+  ['20-morning-correction', '/morning/2'],
+  ['21-morning-heading', '/morning/3?done=1'],
+  ['22-morning-set', '/morning/4'],
+  ['23-week', '/week'],
+  ['24-talk', '/talk'],
+  ['25-talk-answer', '/talk/now'],
+  ['26-reviews', '/reviews'],
+  ['27-review-close', '/review/1'],
+  ['28-review-pick-orphan-gate', '/review/2'],
+  ['29-review-set', '/review/3'],
+  ['30-quarterly-review', '/quarter'],
+  ['31-settings', '/settings'],
+  ['32-first-run-empty-map', '/empty/map'],
+  ['33-first-run-empty-week', '/empty/week'],
+  ['34-nudge-lock-screen', '/nudge/lock'],
+  ['35-nudge-in-app', '/nudge/inapp'],
 ];
 writeFileSync(join(proto, 'screens.json'), JSON.stringify(SCREENS, null, 2) + '\n');
 
@@ -79,10 +88,10 @@ if (process.argv.includes('--serve')) {
   }
 
   const flow = await ctx.newPage();
-  await flow.setViewportSize({ width: 2400, height: 2200 });
+  await flow.setViewportSize({ width: 2700, height: 2900 });
   await flow.goto(`${base}/prototype/flow.html`, { waitUntil: 'networkidle' });
   await settle(flow);
-  await flow.waitForFunction(() => [...document.querySelectorAll('iframe')].every((i) => i.contentDocument?.readyState === 'complete' && i.contentDocument.querySelector('.content')));
+  await flow.waitForFunction(() => [...document.querySelectorAll('iframe')].every((i) => i.contentDocument?.readyState === 'complete' && i.contentDocument.querySelector('#screen > *')));
   await flow.waitForTimeout(800);
   await flow.locator('#flow').screenshot({ path: join(out, '00-flow-overview.png'), animations: 'disabled' });
   console.log('rendered', join(out, '00-flow-overview.png'));
