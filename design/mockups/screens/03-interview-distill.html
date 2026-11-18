@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>03 Interview: distilling life goals</title>
+<link rel="stylesheet" href="../shared.css" />
+<style>
+  .content { gap: 16px; }
+  .goal { display: flex; flex-direction: column; gap: 3px; padding: 10px 0 10px 14px; border-bottom: 1px solid var(--color-hairline); position: relative; }
+  .goal:last-child { border-bottom: 0; }
+  .goal .src { color: var(--color-text-faint); font-style: italic; }
+  .goal::before { content: ''; position: absolute; left: 0; top: 19px; width: 6px; height: 6px; border-radius: 50%; }
+  .goal.kept::before { background: var(--color-accent); box-shadow: 0 0 8px rgba(159,211,255,0.6); }
+  .goal.candidate::before { border: 1px solid var(--color-accent-deep); }
+  .goal.candidate .body { color: var(--color-text-muted); }
+  .foot { display: flex; justify-content: space-between; align-items: center; padding-bottom: 28px; gap: 12px; }
+  .foot .input { height: 48px; }
+</style>
+</head>
+<body>
+<div class="device">
+  <div class="ambient"></div>
+  <div class="status"><span>9:41</span><div class="island"></div><div class="right"><span class="cell"><i style="height:4px"></i><i style="height:6px"></i><i style="height:8px"></i><i style="height:11px"></i></span><span class="wifi"></span><span class="battery"></span></div></div>
+
+  <div class="content">
+    <div class="eyebrow">
+      <span class="label">Life goals · 2 kept of 10–12</span>
+      <span class="btn ghost compact" style="margin-right:-12px">Pause</span>
+    </div>
+
+    <div class="rail-h">
+      <div class="n lit"><i></i><span class="micro">Words</span></div>
+      <div class="n lit"><i></i><span class="micro">Life</span></div>
+      <div class="n next"><i></i><span class="micro">5 yr</span></div>
+      <div class="n"><i></i><span class="micro">1 yr</span></div>
+      <div class="n"><i></i><span class="micro">6 mo</span></div>
+      <div class="n"><i></i><span class="micro">Month</span></div>
+      <div class="n"><i></i><span class="micro">Week</span></div>
+      <div class="n"><i></i><span class="micro">Today</span></div>
+    </div>
+
+    <div class="guide">
+      <div class="halo inline" data-state="speaking"></div>
+      <p class="heading">Life-goal candidates from your two scenes, each tied to your own sentence. Edit, remove, add.</p>
+    </div>
+
+    <div class="scroll stack-md">
+    <div class="stack" style="gap:2px">
+      <span class="label">Kept</span>
+      <div class="goal kept">
+        <span class="body">I run a small design studio that does work I am proud of.</span>
+        <span class="small src">“I left the agency and the studio had its first retainer client.”</span>
+      </div>
+      <div class="goal kept">
+        <span class="body">I can sail a small boat across open water on my own.</span>
+        <span class="small src">“One weekend I took the boat out alone.”</span>
+      </div>
+    </div>
+
+    <div class="stack" style="gap:2px">
+      <span class="label">Candidates · tap to keep</span>
+      <div class="goal candidate">
+        <span class="body">I own our home outright.</span>
+        <span class="small src">“We overpaid the mortgage every quarter.”</span>
+      </div>
+      <div class="goal candidate">
+        <span class="body">I write one honest essay a month.</span>
+        <span class="small src">“Short, honest, mine. A few people wrote back.”</span>
+      </div>
+      <div class="goal candidate">
+        <span class="body">I speak Spanish well enough to live in it.</span>
+        <span class="small src">“Thirty minutes of Spanish, then the day.”</span>
+      </div>
+      <div class="goal candidate">
+        <span class="body">I mentor two younger designers a year.</span>
+        <span class="small src">“I told them the things nobody told me.”</span>
+      </div>
+    </div>
+    </div>
+
+    <div class="why">
+      <span class="small">Each goal is saved in your words and tied to your own sentence. Written, specific goals are acted on more.</span>
+      <span class="tag moderate">Moderate</span>
+    </div>
+
+    <div class="foot">
+      <div class="mic"><span class="micro">Mic</span></div>
+      <div class="input small">Add your own, one sentence.</div>
+      <span class="btn secondary compact">Continue</span>
+    </div>
+  </div>
+
+  <div class="home"></div>
+</div>
+</body>
+</html>
