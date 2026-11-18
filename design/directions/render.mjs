@@ -28,7 +28,8 @@ const browser = await chromium.launch({ executablePath, args: ['--no-sandbox'] }
 const ctx = await browser.newContext({ viewport: { width: 900, height: 950 }, deviceScaleFactor: 2, colorScheme: 'dark', reducedMotion: 'reduce' });
 const settle = async (p) => { await p.evaluate(() => document.fonts.ready); await p.waitForTimeout(300); };
 
-for (const d of ['thread', 'orbit', 'horizon', 'stack', 'document']) {
+const onlyHz = process.argv.includes('--horizon');
+for (const d of onlyHz ? [] : ['thread', 'orbit', 'horizon', 'stack', 'document']) {
   const page = await ctx.newPage();
   await page.goto(`${base}/directions/?d=${d}`, { waitUntil: 'networkidle' });
   await settle(page);
@@ -36,6 +37,23 @@ for (const d of ['thread', 'orbit', 'horizon', 'stack', 'document']) {
   console.log('rendered', d);
   await page.close();
 }
+for (const v of ['one-horizon', 'one-goal', 'lanes']) {
+  const page = await ctx.newPage();
+  await page.goto(`${base}/directions/?d=h-${v}&only=map`, { waitUntil: 'networkidle' });
+  await settle(page);
+  await page.locator('.device').screenshot({ path: join(out, `00c-horizon-variant-${v}.png`), animations: 'disabled' });
+  console.log('rendered variant', v);
+  await page.close();
+}
+const hv = await ctx.newPage();
+await hv.setViewportSize({ width: 1100, height: 1000 });
+await hv.goto(`${base}/directions/horizon-variants.html`, { waitUntil: 'networkidle' });
+await settle(hv);
+await hv.waitForFunction(() => [...document.querySelectorAll('iframe')].every((i) => i.contentDocument?.readyState === 'complete' && i.contentDocument.querySelector('.device')));
+await hv.waitForTimeout(600);
+await hv.locator('#sheet').screenshot({ path: join(out, '00c-horizon-variants.png'), animations: 'disabled' });
+console.log('rendered variants sheet');
+if (onlyHz) { await browser.close(); server.close(); process.exit(0); }
 const sheet = await ctx.newPage();
 await sheet.setViewportSize({ width: 1500, height: 1500 });
 await sheet.goto(`${base}/directions/sheet.html`, { waitUntil: 'networkidle' });

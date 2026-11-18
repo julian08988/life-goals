@@ -212,6 +212,57 @@
     </div>`),
   };
 
+
+  // ---------- Horizon, less crowded: three variants of the map ----------
+  const STRIP = [['today', 'Today'], ['week', 'Week'], ['month', 'Month'], ['one_year', '1 yr'], ['five_year', '5 yr'], ['ten_year', '10 yr']];
+  const strip = (on, { labels = true } = {}) => `<div class="hstrip">${STRIP.map(([k, l]) => `<div class="s ${k === on ? 'on' : ''}"><i></i>${labels ? `<span class="micro">${l}</span>` : ''}</div>`).join('')}</div>`;
+  const laneLines = (sel = 'L1', on = 'week') => `<div class="lanes">${ORDER.map((id) => `<div class="ln ${id === sel ? 'on' : ''}"><span class="nm">${esc(G[id].area)}</span><div class="bar">${STRIP.map(([k]) => `<i class="${k === on ? 'on' : ''}"></i>`).join('')}</div></div>`).join('')}</div>`;
+
+  DIRS['h-one-horizon'] = {
+    name: 'Horizon · One horizon', line: 'The strip across the top selects a horizon; the screen shows only that horizon: three sentences, one per life goal, in large light type. Swipe the strip to travel in time.',
+    map: () => device(`<div class="content with-tabs sparse">
+      ${eyebrow('Tuesday 18 Nov')}
+      ${strip('week')}
+      <h1 class="hz-title">This week</h1>
+      <div class="three">
+        ${ORDER.map((id, i) => { const g = G[id]; return `<div class="one ${i === 0 ? 'lead' : ''}"><span class="micro nm">${esc(g.area)}</span><p class="sent">${esc(g.week)}</p></div>`; }).join('')}
+      </div>
+      <div class="spacer"></div>
+      <span class="micro faint center">Swipe the strip · tap a goal</span>
+    </div>${tabs('Map')}`),
+    interview: () => DIRS.horizon.interview(),
+  };
+
+  DIRS['h-one-goal'] = {
+    name: 'Horizon · One goal', line: 'One life goal at a time as the headline; the strip beneath picks the horizon; one sentence shows. Swipe sideways through horizons, up and down through goals.',
+    map: () => { const g = G.L1; return device(`<div class="content with-tabs sparse">
+      ${eyebrow('Tuesday 18 Nov')}
+      <div class="spacer" style="flex:0.6"></div>
+      <div class="stack" style="gap:6px"><span class="micro faint">${esc(g.area)} · 1 of 3</span><h1 class="hz-life">${esc(g.text)}</h1></div>
+      <div class="spacer" style="flex:0.5"></div>
+      ${strip('week')}
+      <p class="sent big">${esc(g.week)}</p>
+      <p class="small faint">today · ${esc(g.today)}</p>
+      <div class="spacer"></div>
+      <div class="pager"><i class="on"></i><i></i><i></i></div>
+    </div>${tabs('Map')}`); },
+    interview: () => DIRS.horizon.interview(),
+  };
+
+  DIRS['h-lanes'] = {
+    name: 'Horizon · Lanes', line: 'The picture is three thin lanes running left to right with a dot at each horizon; the strip labels the columns. Tap a dot and its sentence appears below. Nothing else on screen.',
+    map: () => { const g = G.L1; return device(`<div class="content with-tabs sparse">
+      ${eyebrow('Tuesday 18 Nov')}
+      <div class="spacer" style="flex:0.4"></div>
+      ${strip('week')}
+      ${laneLines('L1', 'week')}
+      <div class="spacer" style="flex:0.5"></div>
+      <div class="stack" style="gap:8px"><span class="micro faint">${esc(g.area)} · this week</span><p class="sent big">${esc(g.week)}</p><p class="small faint">for ${q(g.text)}</p></div>
+      <div class="spacer"></div>
+    </div>${tabs('Map')}`); },
+    interview: () => DIRS.horizon.interview(),
+  };
+
   const d = DIRS[dir] || DIRS.thread;
   const pair = document.getElementById('pair');
   if (only) { pair.classList.add('one'); pair.innerHTML = d[only](); }

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" /><title>Horizon — three sparse variants</title>
+<link rel="stylesheet" href="../mockups/tokens.css" />
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #040507; color: #F2F3F5; font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+#sheet { padding: 40px 48px 44px; width: max-content; display: flex; flex-direction: column; gap: 26px; background: #040507; }
+.head h1 { font-size: 26px; font-weight: 300; letter-spacing: -0.5px; }
+.head p { color: rgba(242,243,245,0.5); font-size: 14px; margin-top: 6px; max-width: 980px; line-height: 20px; }
+.grid { display: grid; grid-template-columns: repeat(3, 295px); gap: 26px; }
+.dh { display: flex; flex-direction: column; gap: 6px; min-height: 120px; }
+.dh .l { color: #9FD3FF; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; display: flex; gap: 8px; align-items: center; }
+.dh .l .rec { border: 1px solid #9FD3FF; border-radius: 999px; padding: 2px 8px; font-size: 9px; letter-spacing: 1px; background: rgba(159,211,255,0.1); color: #F2F3F5; }
+.dh .n { font-size: 19px; }
+.dh .d { color: rgba(242,243,245,0.55); font-size: 12.5px; line-height: 17px; }
+.frame { width: 295px; height: 639px; overflow: hidden; border-radius: 36px; border: 1px solid rgba(255,255,255,0.09); background: #07080B; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+.frame.rec { box-shadow: 0 0 0 2px rgba(159,211,255,0.55), 0 20px 50px rgba(0,0,0,0.6); }
+.frame iframe { width: 393px; height: 852px; border: 0; transform: scale(0.75); transform-origin: 0 0; pointer-events: none; }
+.foot { color: rgba(242,243,245,0.45); font-size: 13px; line-height: 19px; max-width: 980px; }
+.foot b { color: #9FD3FF; font-weight: 500; }
+</style></head><body>
+<div id="sheet">
+  <div class="head"><h1>Horizon — three sparse variants of the map</h1><p>Same persona and tokens. Each variant shows far fewer elements at once than the first Horizon render: one horizon or one goal in focus, larger light type, no attachment marks on the map, detail by tap or swipe.</p></div>
+  <div class="grid" id="grid"></div>
+  <div class="foot"><b>Pick: One horizon (A) as home, One goal (B) as the detail when a sentence is tapped.</b> A keeps all three life goals on one screen with a single idea per screen (this horizon), so the map still reads as a map of goals, not a to-do list; B gives the goal-in-focus view with the same strip, so travelling in time feels identical on both. Lanes (C) becomes the interview picture, where its empty-then-filling dots carry the drama.</div>
+</div>
+<script>
+const V = [['h-one-horizon','A','One horizon','Strip picks the horizon; the screen shows only that horizon: three sentences, one per life goal. Swipe the strip to travel in time.', true],
+['h-one-goal','B','One goal','One life goal as the headline; the strip beneath picks the horizon; one sentence. Swipe sideways through time, up and down through goals.'],
+['h-lanes','C','Lanes','Three thin lanes with a dot at each horizon; tap a dot and its sentence appears. The picture is the hierarchy; the words come on demand.']];
+document.getElementById('grid').innerHTML = V.map(([k,l,n,d,rec]) => `<div class="dh"><span class="l">${l} ${rec?'<span class="rec">Pick</span>':''}</span><span class="n">${n}</span><span class="d">${d}</span></div>`).join('') + V.map(([k,,,,rec]) => `<div class="frame ${rec?'rec':''}"><iframe src="./index.html?d=${k}&only=map"></iframe></div>`).join('');
+</script></body></html>
