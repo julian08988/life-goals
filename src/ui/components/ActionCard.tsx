@@ -21,12 +21,12 @@ export function ActionCard({ thread, onDone, highlighted = false, onTalk }: Acti
   const priority = thread.goals[0];
   const why = whyLineFor(thread);
   return (
-    <Pressable
-      onPress={() => setOpen((v) => !v)}
-      accessibilityRole="button"
-      accessibilityLabel={open ? 'Hide thread' : 'Show thread'}
-      style={({ pressed }) => [styles.card, highlighted && styles.highlighted, pressed && styles.pressed]}>
-      <View style={styles.head}>
+    <View style={[styles.card, highlighted && styles.highlighted]}>
+      <Pressable
+        onPress={() => setOpen((v) => !v)}
+        accessibilityRole="button"
+        accessibilityLabel={open ? 'Hide thread' : 'Show thread'}
+        style={({ pressed }) => [styles.head, pressed && styles.pressed]}>
         <View style={styles.body}>
           {highlighted ? <Text variant="label" color={colors.accent}>TODAY’S ONE THING</Text> : null}
           <Text variant="heading">{thread.action.text}</Text>
@@ -37,7 +37,7 @@ export function ActionCard({ thread, onDone, highlighted = false, onTalk }: Acti
             </Text>
           ) : null}
         </View>
-      </View>
+      </Pressable>
       {open ? (
         <View style={styles.thread}>
           <ThreadView thread={thread} skipFirst />
@@ -47,7 +47,7 @@ export function ActionCard({ thread, onDone, highlighted = false, onTalk }: Acti
       {onDone && thread.action.status === 'open' ? (
         <Button label="Done" kind="secondary" compact onPress={onDone} style={styles.done} />
       ) : null}
-    </Pressable>
+    </View>
   );
 }
 

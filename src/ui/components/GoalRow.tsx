@@ -12,16 +12,23 @@ interface GoalRowProps {
   trailing?: React.ReactNode;
 }
 
+/** A goal or action line. Only the text is pressable, so controls beside it never nest inside it. */
 export function GoalRow({ text, detail, onRemove, onPress, trailing }: GoalRowProps) {
+  const body = (
+    <View style={styles.body}>
+      <Text>{text}</Text>
+      {detail ? <Text variant="small">{detail}</Text> : null}
+    </View>
+  );
   return (
-    <Pressable
-      onPress={onPress}
-      disabled={!onPress}
-      style={({ pressed }) => [styles.row, pressed && onPress && styles.pressed]}>
-      <View style={styles.body}>
-        <Text>{text}</Text>
-        {detail ? <Text variant="small">{detail}</Text> : null}
-      </View>
+    <View style={styles.row}>
+      {onPress ? (
+        <Pressable onPress={onPress} accessibilityRole="button" style={({ pressed }) => [styles.pressArea, pressed && styles.pressed]}>
+          {body}
+        </Pressable>
+      ) : (
+        body
+      )}
       {trailing}
       {onRemove ? (
         <Pressable
@@ -35,7 +42,7 @@ export function GoalRow({ text, detail, onRemove, onPress, trailing }: GoalRowPr
           </Text>
         </Pressable>
       ) : null}
-    </Pressable>
+    </View>
   );
 }
 
@@ -50,7 +57,8 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: colors.hairline,
   },
-  pressed: { opacity: 0.85 },
+  pressArea: { flex: 1 },
+  pressed: { opacity: 0.7 },
   body: { flex: 1, gap: 4 },
   remove: { paddingTop: 2 },
 });
