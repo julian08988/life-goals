@@ -168,7 +168,7 @@ Owners: **A** = agents (Cursor cloud agents plus gstack skills, reviewed by Juli
 
 - J: Morning Course in the morning, Weekly Review at his chosen time: the full loop runs once, end to end.
 - A: Parity pass against Paper screen by screen; motion and haptics; empty, error and offline states; Android pass (back gesture, audio focus, notification channels); `/design-review` round 2.
-- A: Store assets from the real app: icon, iPhone and Android screenshots, descriptions written to spec §6 (headline "Set goals the proven way. Stay on course every day.", second line "Every step shows why it works and how strong the evidence is.", and "No streaks. A missed day gets a correction, not a penalty." said plainly; matter-of-fact register, no manifestation or future-self framing, no outcome promises), privacy-policy page live with the deletion URL, App Privacy and Data Safety answers for Julian's approval.
+- A: Store assets from the real app: icon, iPhone and Android screenshots, descriptions written to spec §6 (headline "Unlock who you could be. Stay on course to the life you want.", sub-line "A proven method, applied every day, with the reasons shown.", and "No streaks. A missed day gets a correction, not a penalty." said plainly; emotion in the headline only, matter-of-fact everywhere beneath it, no manifestation or future-self language, no outcome promises), privacy-policy page live with the deletion URL, App Privacy and Data Safety answers for Julian's approval.
 - A: `/cso` pass on RLS, Edge Function auth and keys; delete-my-data verified end to end; `/ios-qa` on a physical iPhone against §7.
 
 **Mon Nov 23 — Gate, ship, submit (launch milestone)**

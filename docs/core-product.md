@@ -130,18 +130,27 @@ The Week Weave (three slots, threads to the scene sentence) and the course line 
 
 ## 6. Positioning and the three lines we say out loud
 
-The position is matter-of-fact: this is the right way to set goals and reach them, applied daily, with the reasons shown. The product gives the user confidence because every step names the technique it uses, why it works, and how strong the evidence is. We do not lead with feeling (research's "future self, in your voice" hook, MR §5 option 2); that shelf is crowded (Stella, Aya, Manifest), sells a mood without a plan, and pure positive fantasy lowers effort (Kappes & Oettingen; MR §1, §3.1). Own-voice recordings stay as a feature because the evidence for them is real (§7); they are not the pitch.
+Two registers, deliberately split. The headline and first store line carry the emotion: becoming who you could be, not letting your life drift, staying on course to what you actually want. Everything beneath them is matter-of-fact (§2 "Product voice"): the method, the reasons, the evidence labels. The emotion is the promise the user feels; the proof is why they believe it. "Goals" is not the lead noun; the category word appears in the subtitle and the body, not the headline. We still avoid manifestation language: no "attract", "manifest", "future self", "dream life". Research supports the split: the "changed my life" reviews cluster around apps that speak to identity and warmth (Finch, MyFutureSelf; MR §3.5, §3.11), while the buyers who stay and pay for mechanism want the reasons shown (Waking Up, Balance; MR §5). Pure positive fantasy lowers effort (Kappes & Oettingen), so every emotional line pairs with "on course", which is an action, not a wish.
 
-Three candidate lead lines:
+Five candidate headlines:
 
-1. **"Set goals the proven way. Stay on course every day."** Recommended. Two declaratives covering both halves of the product: the method (interview and hierarchy) and the daily application (Morning Course, Talk It Through, Weekly Review). "Proven way" is defensible because each step cites a technique with published evidence (§7), and it says execution, which is where the market is empty: hierarchy apps without a daily ritual died (Dreamfora, Lifetick) and the praised feature in trackers is "ahead or behind pace", not the log (MR §3.10, §4).
-2. **"A proven method to set goals and reach them."** Simplest and most searchable. Risk: "reach them" reads as an outcome promise, which we cannot make and store review may question. Use as a subtitle variant in a market where the first line has been understood.
-3. **"Goal-setting that works, with the reasons shown."** The differentiator line for the evidence-minded buyer who pays for mechanism over mood (Waking Up at $150/yr, Balance's "education of the effects"; MR §5). Weaker as a headline because "works" is vague; strong as the second sentence on the store page.
+1. **"Unlock who you could be. Stay on course to the life you want."** Recommended. First sentence is the emotional promise (identity, potential); second is the daily job and the guard against drift. "The life you want" is want-vs-should in plain words, which is the method's first gate (§7). Two sentences let it demo in ten seconds and read as a pair on the store page.
+2. **"Stop drifting. Become who you set out to be."** Strongest emotionally; the pain first, then the identity. Risk: "stop drifting" can read as a reproach to someone who already feels behind, and the product voice forbids shame. Good for a paid-social variant where the viewer self-selects.
+3. **"Your life, on course."** Shortest; works as an app-store subtitle or an icon-adjacent tagline. Too compressed to carry the identity half on its own; use beneath a visual, not as the lone headline.
+4. **"The course to who you want to be."** Names the product as the route rather than the destination, which is honest about what it does. Slightly abstract; "course" alone does not say daily.
+5. **"Don't let your life drift from what you want. Become who you could be, one day at a time."** Most explicit about the daily mechanism and the anti-drift job. Long for a headline; a candidate for the first screenshot caption or the onboarding opening line.
+
+Recommended pair:
+
+> **Unlock who you could be. Stay on course to the life you want.**
+> A proven method, applied every day, with the reasons shown.
+
+The sub-line is the proof: method (interview and hierarchy), daily application (Morning Course, Talk It Through, Weekly Review), and the "Why this step" layer (§8). "Proven" is defensible because every step cites a technique with published evidence (§7).
 
 The three lines we say out loud:
 
-1. **"Set goals the proven way. Stay on course every day."** The headline, for the reasons above.
-2. **"Every step shows why it works and how strong the evidence is."** No app in the set does this; the nearest (Balance, Waking Up) explain meditation, not goal execution (MR §5), and "generic" is the kill word for AI products (MR §1, §3.6).
+1. **"Unlock who you could be. Stay on course to the life you want."** The headline, for the reasons above.
+2. **"A proven method, applied every day, with the reasons shown."** No app in the set does this; the nearest (Balance, Waking Up) explain meditation, not execution (MR §5), and "generic" is the kill word for AI products (MR §1, §3.6).
 3. **"No streaks. A missed day gets a correction, not a penalty."** Streak guilt is complained about in every app sampled, including Streaks and Finch, and no app offers a direction-of-travel model (MR §1, §4).
 
 Known risk: planning is a harder ten-second demo than audio (MR §5). Our demo is a Talk It Through exchange: "forty minutes, what do I do?" answered with one step, its goal, and the reason.
