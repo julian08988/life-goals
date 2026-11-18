@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>04 Morning Course</title>
+<link rel="stylesheet" href="../shared.css" />
+<style>
+  .content { gap: 0; }
+  .player { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px; padding-top: 14px; }
+  .player .sentence { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+  .player .spoken { max-width: 330px; }
+  .player .spoken .said { color: var(--color-text); }
+  .player .spoken .next { color: var(--color-text-faint); }
+  .today { margin-top: 24px; }
+  .today .thread .text { padding-bottom: 8px; }
+  .bottom { display: flex; flex-direction: column; gap: 12px; padding-bottom: 24px; }
+</style>
+</head>
+<body>
+<div class="device">
+  <div class="ambient center"></div>
+  <div class="status"><span>9:41</span><div class="island"></div><div class="right"><span class="cell"><i style="height:4px"></i><i style="height:6px"></i><i style="height:8px"></i><i style="height:11px"></i></span><span class="wifi"></span><span class="battery"></span></div></div>
+
+  <div class="content">
+    <div class="eyebrow">
+      <span class="label">Morning Course · 1 of 4</span>
+      <span class="btn ghost compact" style="margin-right:-12px">Leave</span>
+    </div>
+
+    <div class="player">
+      <div class="halo large" data-state="speaking"></div>
+      <div class="sentence">
+        <span class="label">Life goal · your words</span>
+        <p class="spoken"><span class="said">“I run a small design studio that does work I am proud of.</span> <span class="next">So the work is mine and I know everyone by name.”</span></p>
+      </div>
+      <p class="small muted" style="max-width:310px">Then five years out: “three people and twelve months of runway.”</p>
+    </div>
+
+    <div class="today">
+      <div class="thread tight">
+        <div class="node">
+          <div class="rail"><span class="dot lit"></span><span class="line"></span></div>
+          <div class="text"><span class="label">Today</span><span class="body">Draft the retainer email in plain sentences.</span></div>
+        </div>
+        <div class="node faded">
+          <div class="rail"><span class="dot"></span><span class="line"></span></div>
+          <div class="text"><span class="label">This week</span><span class="small">Email five past clients and book two calls.</span></div>
+        </div>
+        <div class="node faded">
+          <div class="rail"><span class="dot"></span></div>
+          <div class="text"><span class="small faint">Four levels up to the life goal above.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="bottom">
+      <div class="why">
+        <span class="small">Say the thread back. Recalling a goal keeps it active; re-reading does not.</span>
+        <span class="tag strong">Strong</span>
+      </div>
+      <a class="btn secondary block">I said it. Next.</a>
+    </div>
+  </div>
+
+  <div class="home"></div>
+</div>
+</body>
+</html>

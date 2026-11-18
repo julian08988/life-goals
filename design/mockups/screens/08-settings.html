@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>08 Settings</title>
+<link rel="stylesheet" href="../shared.css" />
+<style>
+  .content { gap: 6px; }
+  .srow { display: flex; align-items: center; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--color-hairline); }
+  .srow .t { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+  .srow .t .small { color: var(--color-text-faint); }
+  .srow .val { color: var(--color-text-muted); }
+  .section { padding-top: 22px; display: flex; flex-direction: column; gap: 10px; }
+</style>
+</head>
+<body>
+<div class="device">
+  <div class="ambient"></div>
+  <div class="status"><span>9:41</span><div class="island"></div><div class="right"><span class="cell"><i style="height:4px"></i><i style="height:6px"></i><i style="height:8px"></i><i style="height:11px"></i></span><span class="wifi"></span><span class="battery"></span></div></div>
+
+  <div class="content">
+    <div class="eyebrow">
+      <span class="title">Settings</span>
+      <span class="btn ghost compact" style="margin-right:-12px">Done</span>
+    </div>
+
+    <div class="list">
+      <div class="srow"><div class="t"><span class="body">Morning Course</span><span class="small">A notification at this time, every day.</span></div><span class="body val">7:00</span></div>
+      <div class="srow"><div class="t"><span class="body">Weekly Review</span><span class="small">Fifteen minutes on your chosen day.</span></div><span class="body val">Sunday</span></div>
+      <div class="srow"><div class="t"><span class="body">Guide speaks out loud</span><span class="small">Spoken end to end. Typing stays.</span></div><span class="switch on"></span></div>
+      <div class="srow"><div class="t"><span class="body">Self-talk layer</span><span class="small">Optional inner-critic prompt.</span></div><span class="switch"></span></div>
+      <div class="srow"><div class="t"><span class="body">Demo data</span><span class="small">Invented hierarchy on every screen. Replaces yours.</span></div><span class="switch on"></span></div>
+    </div>
+
+    <div class="section">
+      <span class="label">What the guide knows</span>
+      <div class="rail-h counted">
+        <div class="n lit"><b>2</b><i></i><span class="micro">Scenes</span></div>
+        <div class="n lit"><b>10</b><i></i><span class="micro">Life</span></div>
+        <div class="n lit"><b>5</b><i></i><span class="micro">5 yr</span></div>
+        <div class="n lit"><b>5</b><i></i><span class="micro">1 yr</span></div>
+        <div class="n lit"><b>3</b><i></i><span class="micro">6 mo</span></div>
+        <div class="n lit"><b>3</b><i></i><span class="micro">Month</span></div>
+        <div class="n lit"><b>3</b><i></i><span class="micro">Week</span></div>
+      </div>
+      <span class="small faint">Sample hierarchy for “Sam”, a product designer. Every goal threads to a scene sentence; nothing is saved without a parent.</span>
+    </div>
+
+    <div class="section">
+      <span class="label">Data</span>
+      <span class="small muted">Everything is stored on this device only.</span>
+      <span class="btn secondary compact muted" style="align-self:flex-start">Start over · deletes everything</span>
+    </div>
+  </div>
+
+  <div class="home"></div>
+</div>
+</body>
+</html>

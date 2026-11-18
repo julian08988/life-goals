@@ -1,0 +1,15 @@
+{
+  "name": "life-goals-mockups",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static high-fidelity mockups for Life Goals, rendered at iPhone 15 Pro dimensions.",
+  "type": "module",
+  "scripts": {
+    "tokens": "node scripts/build-tokens.mjs",
+    "render": "node scripts/build-tokens.mjs && node scripts/render.mjs",
+    "serve": "node scripts/render.mjs --serve"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.49.0"
+  }
+}
