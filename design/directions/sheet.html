@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Life Goals — design-shotgun directions</title>
+<link rel="stylesheet" href="../mockups/tokens.css" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #040507; color: #F2F3F5; font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  #sheet { padding: 44px 52px 48px; width: max-content; background: #040507; display: flex; flex-direction: column; gap: 28px; }
+  .head h1 { font-size: 28px; font-weight: 300; letter-spacing: -0.5px; }
+  .head p { color: rgba(242,243,245,0.5); font-size: 14px; margin-top: 6px; max-width: 1100px; line-height: 20px; }
+  .grid { display: grid; grid-template-columns: 70px repeat(5, 236px); gap: 18px 22px; align-items: start; }
+  .rowlab { color: rgba(242,243,245,0.35); font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; padding-top: 220px; text-align: right; }
+  .rowlab.first { padding-top: 0; }
+  .dh { display: flex; flex-direction: column; gap: 6px; min-height: 118px; }
+  .dh .l { color: #9FD3FF; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; display: flex; gap: 8px; align-items: center; }
+  .dh .l .rec { border: 1px solid #9FD3FF; border-radius: 999px; padding: 2px 8px; font-size: 9px; letter-spacing: 1px; background: rgba(159,211,255,0.1); color: #F2F3F5; }
+  .dh .n { font-size: 20px; font-weight: 400; }
+  .dh .d { color: rgba(242,243,245,0.55); font-size: 12.5px; line-height: 17px; }
+  .frame { width: 236px; height: 511px; overflow: hidden; border-radius: 30px; border: 1px solid rgba(255,255,255,0.09); background: #07080B; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+  .frame iframe { width: 393px; height: 852px; border: 0; transform: scale(0.6); transform-origin: 0 0; pointer-events: none; }
+  .frame.rec { box-shadow: 0 0 0 2px rgba(159,211,255,0.55), 0 20px 50px rgba(0,0,0,0.6); }
+  .foot { color: rgba(242,243,245,0.45); font-size: 13px; line-height: 19px; max-width: 1400px; }
+  .foot b { color: #9FD3FF; font-weight: 500; }
+</style>
+</head>
+<body>
+<div id="sheet">
+  <div class="head">
+    <h1>Life Goals — five directions for the goal map and the interview</h1>
+    <p>Same persona (Noor, physiotherapist, three life goals), same tokens (ice blue on near-black, Inter, halo for voice), same horizons (10 years · 5 years · 1 year · this month · this week · today). Only the structure changes: how the goals are seen without becoming a list, and how the interview takes voice, typing and photos or documents.</p>
+  </div>
+  <div class="grid" id="grid"></div>
+  <div class="foot"><b>Recommendation: Orbit for the map, with the Thread as the drill-down.</b> Orbit is the only direction where the whole hierarchy is one picture that cannot be mistaken for a to-do list, where “today” is visibly inside the life goal rather than beside it, and where the interview has a natural dramatic form (the sky fills as goals land). Tapping a ray opens the Thread, which already renders a nine-level ancestry legibly. Document stays as the editable record behind both.</div>
+</div>
+<script>
+  const DIRS = [
+    ['thread', 'A', 'Thread', 'Vertical rail per life goal, read bottom-up. Dense and literal; the drill-down view.'],
+    ['orbit', 'B', 'Orbit', 'Today at the centre, horizons as rings, life goals as stars. One picture; tap a ray for detail.', true],
+    ['horizon', 'C', 'Horizon', 'Time runs left to right; each life goal is a lane. One horizon in focus, the rest are dots.'],
+    ['stack', 'D', 'Stack', 'One goal at a time; horizons as a deck in depth, 10 years at the back, today in front.'],
+    ['document', 'E', 'Document', 'A typeset living record in the user’s words; horizons as margin-labelled lines, attachments as footnotes.'],
+  ];
+  const g = document.getElementById('grid');
+  let html = '<div></div>' + DIRS.map(([k, l, n, d, rec]) => `<div class="dh"><span class="l">${l} ${rec ? '<span class="rec">Recommended</span>' : ''}</span><span class="n">${n}</span><span class="d">${d}</span></div>`).join('');
+  html += '<div class="rowlab">Map</div>' + DIRS.map(([k, , , , rec]) => `<div class="frame ${rec ? 'rec' : ''}"><iframe src="./index.html?d=${k}&only=map"></iframe></div>`).join('');
+  html += '<div class="rowlab">Interview</div>' + DIRS.map(([k, , , , rec]) => `<div class="frame ${rec ? 'rec' : ''}"><iframe src="./index.html?d=${k}&only=interview"></iframe></div>`).join('');
+  g.innerHTML = html;
+</script>
+</body>
+</html>

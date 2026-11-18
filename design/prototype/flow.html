@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Life Goals — UI flow v1 overview</title>
+<link rel="stylesheet" href="../mockups/tokens.css" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #040507; color: #F2F3F5; font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  #flow { padding: 48px 56px 56px; display: flex; flex-direction: column; gap: 40px; width: max-content; min-width: 2400px; background: #040507; }
+  .head { display: flex; align-items: baseline; justify-content: space-between; }
+  .head h1 { font-size: 30px; font-weight: 300; letter-spacing: -0.6px; }
+  .head p { color: rgba(242,243,245,0.5); font-size: 15px; }
+  .phase { display: flex; flex-direction: column; gap: 14px; }
+  .phase .ph { display: flex; align-items: baseline; gap: 14px; }
+  .phase .ph .n { color: #9FD3FF; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .phase .ph .t { font-size: 18px; font-weight: 400; }
+  .phase .ph .d { color: rgba(242,243,245,0.45); font-size: 14px; }
+  .row { display: flex; align-items: flex-start; }
+  .shot { width: 236px; display: flex; flex-direction: column; gap: 10px; }
+  .frame { width: 236px; height: 511px; overflow: hidden; border-radius: 30px; border: 1px solid rgba(255,255,255,0.09); background: #07080B; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+  .frame iframe { width: 393px; height: 852px; border: 0; transform: scale(0.6); transform-origin: 0 0; pointer-events: none; }
+  .cap { display: flex; gap: 8px; align-items: baseline; padding: 0 4px; }
+  .cap i { font-style: normal; color: #9FD3FF; font-size: 11px; letter-spacing: 1px; }
+  .cap span { font-size: 13px; color: rgba(242,243,245,0.72); line-height: 18px; }
+  .arrow { width: 44px; height: 511px; display: flex; align-items: center; justify-content: center; color: rgba(159,211,255,0.55); flex: none; }
+  .arrow svg { width: 24px; height: 12px; }
+  .arrow.down { width: 236px; height: 28px; margin-left: 0; transform: rotate(90deg); display: none; }
+  .legend { display: flex; gap: 28px; color: rgba(242,243,245,0.45); font-size: 13px; }
+  .legend b { color: #9FD3FF; font-weight: 500; }
+</style>
+</head>
+<body>
+<div id="flow">
+  <div class="head">
+    <h1>Life Goals — UI flow v1 · from life goals down to this week, and a guide you talk to</h1>
+    <p>Demo persona: Noor, physiotherapist, three life goals · ice blue on near-black · halo = voice · thread reads bottom-up</p>
+  </div>
+  <div id="phases"></div>
+  <div class="legend"><span><b>→</b> tap leads to</span><span><b>halo</b> listening / speaking / thinking</span><span><b>thread</b> today → week → month → 6 mo → 1 yr → 5 yr → life goal → your words</span><span>Tabs: Map · Talk · Week</span></div>
+</div>
+<script>
+  const PHASES = [
+    ['1', 'Welcome and interview', 'Spoken scenes become life goals in the user’s words', [
+      ['01', 'Welcome', '/welcome'],
+      ['02', 'Scene · Work', '/interview/scene/1?done=1'],
+      ['03', 'Scene · Relationships', '/interview/scene/2?done=1'],
+      ['04', 'Scene · Body, end of life', '/interview/scene/3?done=1'],
+      ['05', 'Life goals, captured', '/interview/life-goals'],
+    ]],
+    ['2', 'Distil the hierarchy', 'Each level drafted under its parent; user confirms or changes out loud', [
+      ['06', '5-year goals', '/interview/level/five_year'],
+      ['07', '1-year goals', '/interview/level/one_year'],
+      ['08', '6-month goals', '/interview/level/six_month'],
+      ['09', 'This month', '/interview/level/month'],
+      ['10', 'This week, with if-then', '/interview/level/week'],
+      ['11', 'Map set', '/interview/set'],
+    ]],
+    ['3', 'The map, every day', 'Home is the life goals; every screen hangs off them', [
+      ['12', 'Map home', '/map'],
+      ['13', 'Life goal thread', '/thread/L1'],
+      ['14', 'Life goals document', '/document'],
+      ['15', 'Morning · hear the thread', '/morning/1'],
+      ['16', 'Morning · correct the drift', '/morning/2'],
+      ['17', 'Morning · today’s heading', '/morning/3?done=1'],
+      ['18', 'Morning · obstacle, if-then', '/morning/4'],
+      ['19', 'Morning · today is set', '/morning/5'],
+    ]],
+    ['4', 'Week, talk, review, settings', 'Every item threaded; nothing without a goal above it survives the review', [
+      ['20', 'Week', '/week'],
+      ['21', 'Talk it through', '/talk'],
+      ['22', 'Talk · answer and next step', '/talk/now'],
+      ['23', 'Review · close the week', '/review/1'],
+      ['24', 'Review · pick three, orphan gate', '/review/2'],
+      ['25', 'Review · week set', '/review/3'],
+      ['26', 'Settings', '/settings'],
+    ]],
+  ];
+  const arrow = '<div class="arrow"><svg viewBox="0 0 24 12"><path d="M0 6h20M15 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>';
+  document.getElementById('phases').innerHTML = PHASES.map(([n, t, d, shots]) => `
+    <div class="phase" style="margin-bottom:12px">
+      <div class="ph"><span class="n">Phase ${n}</span><span class="t">${t}</span><span class="d">${d}</span></div>
+      <div class="row">${shots.map(([i, cap, hash], k) => `${k ? arrow : ''}<div class="shot"><div class="frame"><iframe src="./index.html?bare=1#${hash}"></iframe></div><div class="cap"><i>${i}</i><span>${cap}</span></div></div>`).join('')}</div>
+    </div>`).join('');
+</script>
+</body>
+</html>
