@@ -2,8 +2,7 @@
  * Runtime configuration from EXPO_PUBLIC_* variables. Every value is optional; the app
  * runs fully offline without them. See .env.example and RUNNING.md.
  */
-function read(name: string): string | null {
-  const value = process.env[name];
+function clean(value: string | undefined): string | null {
   return value && value.trim().length > 0 ? value.trim() : null;
 }
 
@@ -18,11 +17,11 @@ export interface AppConfig {
 
 export function loadConfig(): AppConfig {
   return {
-    anthropicKey: read('EXPO_PUBLIC_ANTHROPIC_API_KEY'),
-    anthropicModel: read('EXPO_PUBLIC_ANTHROPIC_MODEL') ?? 'claude-sonnet-4-5',
-    openaiKey: read('EXPO_PUBLIC_OPENAI_API_KEY'),
-    openaiTtsVoice: read('EXPO_PUBLIC_OPENAI_TTS_VOICE') ?? 'alloy',
-    proxyUrl: read('EXPO_PUBLIC_GUIDE_PROXY_URL')?.replace(/\/$/, '') ?? null,
+    anthropicKey: clean(process.env.EXPO_PUBLIC_ANTHROPIC_API_KEY),
+    anthropicModel: clean(process.env.EXPO_PUBLIC_ANTHROPIC_MODEL) ?? 'claude-sonnet-4-5',
+    openaiKey: clean(process.env.EXPO_PUBLIC_OPENAI_API_KEY),
+    openaiTtsVoice: clean(process.env.EXPO_PUBLIC_OPENAI_TTS_VOICE) ?? 'alloy',
+    proxyUrl: clean(process.env.EXPO_PUBLIC_GUIDE_PROXY_URL)?.replace(/\/$/, '') ?? null,
   };
 }
 

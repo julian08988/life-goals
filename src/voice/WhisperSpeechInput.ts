@@ -1,6 +1,4 @@
 import {
-  AudioModule,
-  RecordingPresets,
   requestRecordingPermissionsAsync,
   setAudioModeAsync,
   type AudioRecorder,
@@ -11,12 +9,18 @@ import { config, openaiEndpoint, type AppConfig } from '@/config/env';
 
 import { SpeechInputError, type SpeechInput } from './types';
 
-/** Records with expo-audio and transcribes with OpenAI's Whisper endpoint. */
+/**
+ * Records with an expo-audio recorder (owned by the calling hook) and transcribes with
+ * OpenAI's Whisper endpoint.
+ */
 export class WhisperSpeechInput implements SpeechInput {
   readonly kind = 'whisper';
-  private recorder: AudioRecorder | null = null;
+  private active = false;
 
-  constructor(private readonly cfg: AppConfig = config) {}
+  constructor(
+    private readonly recorder: AudioRecorder,
+    private readonly cfg: AppConfig = config,
+  ) {}
 
   async start(): Promise<void> {
     const permission = await requestRecordingPermissionsAsync();
@@ -24,33 +28,25 @@ export class WhisperSpeechInput implements SpeechInput {
       throw new SpeechInputError('Microphone permission was not granted.', 'permission_denied');
     }
     await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true });
-    const recorder = new AudioModule.AudioRecorder(RecordingPresets.LOW_QUALITY);
-    await recorder.prepareToRecordAsync();
-    recorder.record();
-    this.recorder = recorder;
+    await this.recorder.prepareToRecordAsync();
+    this.recorder.record();
+    this.active = true;
   }
 
   async stop(): Promise<string> {
-    const recorder = this.recorder;
-    if (!recorder) return '';
-    this.recorder = null;
-    await recorder.stop();
+    if (!this.active) return '';
+    this.active = false;
+    await this.recorder.stop();
     await setAudioModeAsync({ allowsRecording: false });
-    const uri = recorder.uri;
+    const uri = this.recorder.uri;
     if (!uri) throw new SpeechInputError('Nothing was recorded.', 'unavailable');
-    try {
-      return await this.transcribe(uri);
-    } finally {
-      recorder.release();
-    }
+    return this.transcribe(uri);
   }
 
   async cancel(): Promise<void> {
-    const recorder = this.recorder;
-    this.recorder = null;
-    if (recorder) {
-      await recorder.stop();
-      recorder.release();
+    if (this.active) {
+      this.active = false;
+      await this.recorder.stop();
     }
     await setAudioModeAsync({ allowsRecording: false });
   }

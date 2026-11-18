@@ -1,6 +1,6 @@
 import { spokenReason } from '@/content/methods';
 import { addDays, weekStartOf } from '@/domain/dates';
-import { bestMatchingSentence, splitSentences, threadFor, tokenize } from '@/domain/hierarchy';
+import { bestMatchingSentence, splitSentences, tokenize } from '@/domain/hierarchy';
 import type { Citation, FourQuestion, Goal, GuideAnswer, ProposedAction, ScenePassage } from '@/domain/types';
 import { selectTodayActions, selectWeekThread, type WeekSlot } from '@/store/selectors';
 

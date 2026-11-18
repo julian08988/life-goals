@@ -1,3 +1,4 @@
+import { RecordingPresets, useAudioRecorder, type AudioRecorder } from 'expo-audio';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { hasOpenAI } from '@/config/env';
@@ -23,8 +24,11 @@ export function speechOutput(): SpeechOutput {
   return sharedOutput;
 }
 
-export function createSpeechInput(sample: () => string = () => SAMPLE_TRANSCRIPT): SpeechInput {
-  return hasOpenAI() ? new WhisperSpeechInput() : new MockSpeechInput(sample);
+export function createSpeechInput(
+  recorder: AudioRecorder,
+  sample: () => string = () => SAMPLE_TRANSCRIPT,
+): SpeechInput {
+  return hasOpenAI() ? new WhisperSpeechInput(recorder) : new MockSpeechInput(sample);
 }
 
 interface UseVoiceOptions {
@@ -36,7 +40,8 @@ interface UseVoiceOptions {
 /** Mic state machine plus guide speech, honouring the voiceOutput setting. */
 export function useVoice({ onTranscript, sample }: UseVoiceOptions) {
   const voiceOutput = useAppStore((s) => s.settings.voiceOutput);
-  const input = useMemo(() => createSpeechInput(sample), [sample]);
+  const recorder = useAudioRecorder(RecordingPresets.LOW_QUALITY);
+  const input = useMemo(() => createSpeechInput(recorder, sample), [recorder, sample]);
   const [mic, setMic] = useState<MicState>('idle');
   const [speaking, setSpeaking] = useState(false);
   const [error, setError] = useState<string | null>(null);
