@@ -13,9 +13,21 @@ Expo SDK 58, React Native, TypeScript, Expo Router. Local-first: everything is s
    ```
 
 3. Scan the QR code in the terminal (iPhone: Camera app; Android: Expo Go's scanner). Phone and computer must be on the same Wi-Fi. If the LAN is blocked, run `npx expo start --tunnel`.
-4. The app opens on the interview. Settings (top right on Home) has **Demo data** to load a sample hierarchy so every screen has content.
+4. The app opens on the interview. Settings (top right on Today) has **Demo data** to load a sample hierarchy so every screen has content.
 
-Web preview: `npx expo start --web`, or `npm run web`.
+Everything here runs in Expo Go: `expo-audio`, `expo-speech`, `expo-file-system` and AsyncStorage are all in the Go client. No development build is needed until on-device speech recognition is added.
+
+Web preview: `npx expo start --web`, or `npm run web`. The mic on web records via the browser; device TTS uses the Web Speech API.
+
+## What runs, and what is mocked
+
+| Piece | Without keys | With keys |
+| --- | --- | --- |
+| Interview, Morning Course, Today, Week, Weekly Review, Settings | Real; local-first, persisted to AsyncStorage | Same |
+| Guide reasoning (Talk It Through, life-goal distillation) | `MockGuide`: rule-based, offline, answers from your stored hierarchy | `LLMGuide` on Anthropic with structured output; falls back to `MockGuide` on any error |
+| Mic (speech-to-text) | Simulated: the mic button inserts a sample transcript you can edit | `expo-audio` recording → OpenAI Whisper |
+| Guide voice (text-to-speech) | Device TTS (`expo-speech`) | OpenAI TTS, device TTS as fallback |
+| Demo data | Synthetic persona "Sam", designer leaving an agency; zero orphans | Same |
 
 ## Keys (optional)
 
