@@ -7,6 +7,7 @@ Most people do not fail at goals because they lack a list; they fail because the
 ## Documents
 
 - [Product concept](docs/product-concept.md) — vision, target user, the goal-setting method, the neuroplasticity and anti-negative-self-talk layer, core loops, design direction, technical direction, and open questions.
+- [Build plan, week 1](docs/build-plan.md) — v1 scope (four moments), design-first sequence in Paper, stack, day-by-day schedule Nov 18–24, Julian's to-do list, risks and cuts, and the quality bar for submission.
 
 ## Working method
 
