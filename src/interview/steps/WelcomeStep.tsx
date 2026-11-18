@@ -7,9 +7,9 @@ import { Button } from '@/ui/components/Button';
 import { Input } from '@/ui/components/Input';
 import { Text } from '@/ui/components/Text';
 import { WhyThisStep } from '@/ui/components/WhyThisStep';
-import { spacing } from '@/ui/theme';
+import { colors, spacing } from '@/ui/theme';
 
-import { HEADLINE, SUBLINE } from '../script';
+import { HEADLINE, SUBLINE, THIRD_LINE } from '../script';
 
 interface WelcomeStepProps {
   onNext: () => void;
@@ -24,7 +24,10 @@ export function WelcomeStep({ onNext }: WelcomeStepProps) {
     <View style={styles.root}>
       <View style={styles.hero}>
         <Text variant="display">{HEADLINE}</Text>
-        <Text variant="display">{SUBLINE}</Text>
+        <Text variant="heading" color={colors.textMuted}>
+          {SUBLINE}
+        </Text>
+        <Text variant="small">{THIRD_LINE}</Text>
       </View>
       <Text variant="bodyMuted">
         One interview, about forty-five minutes. You describe the life you intend to have, then
@@ -51,6 +54,6 @@ export function WelcomeStep({ onNext }: WelcomeStepProps) {
 
 const styles = StyleSheet.create({
   root: { gap: spacing.lg },
-  hero: { gap: spacing.xs, paddingVertical: spacing.lg },
+  hero: { gap: spacing.sm, paddingVertical: spacing.lg },
   field: { gap: spacing.sm },
 });

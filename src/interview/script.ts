@@ -6,8 +6,10 @@ import type { GoalLevel, InterviewStep, LifeArea } from '@/domain/types';
 /** Spec §3: the near-term scene is 6–9 months out. */
 export const NEAR_TERM_HORIZON = 'six to nine months from now';
 
-export const HEADLINE = 'Set goals the proven way.';
-export const SUBLINE = 'Stay on course every day.';
+/** Spec §6: the three lines we say out loud. "Proven" never appears in app copy. */
+export const HEADLINE = 'Keep your life goals in sight. Work towards them every day.';
+export const SUBLINE = 'Built on neuroscience and behavioral research.';
+export const THIRD_LINE = 'No streaks. A missed day gets a correction, not a penalty.';
 
 export interface ScenePrompt {
   area: LifeArea | null;
@@ -100,7 +102,7 @@ export const LEVEL_STEPS: LevelStepConfig[] = [
 ];
 
 export const STEP_SPOKEN: Partial<Record<InterviewStep, string>> = {
-  welcome: `${HEADLINE} ${SUBLINE} This takes about forty-five minutes. Stop any time; you come back to the same question. ${spokenReason('interview.opening')}`,
+  welcome: `${HEADLINE} ${SUBLINE} ${THIRD_LINE} This takes about forty-five minutes. Stop any time; you come back to the same question. ${spokenReason('interview.opening')}`,
   near_term_scene: `First, the near-term scene. ${spokenReason('interview.near_term_scene')}`,
   end_of_life_scene: `Now the end-of-life scene. ${spokenReason('interview.end_of_life_scene')}`,
   life_goals: `From your two scenes, here are life-goal candidates, each tied to your own sentence. Edit, remove, add. Keep ten to twelve. ${spokenReason('interview.life_goals')}`,

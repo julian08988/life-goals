@@ -2,6 +2,7 @@ import { Link, router } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 
 import { formatLongDate, todayISO, weekStartOf } from '@/domain/dates';
+import { THIRD_LINE } from '@/interview/script';
 import { selectDoneToday, selectTodayActions, selectWeekThread } from '@/store/selectors';
 import { useAppStore } from '@/store/useAppStore';
 import { ActionCard } from '@/ui/components/ActionCard';
@@ -100,7 +101,7 @@ export default function TodayScreen() {
         <Button label="Talk it through" kind="ghost" onPress={() => router.push('/talk')} />
       ) : null}
       <Text variant="small" color={colors.textFaint} style={styles.foot}>
-        Week of {weekStartOf(today)}. No streaks. A missed day gets a correction, not a penalty.
+        Week of {weekStartOf(today)}. {THIRD_LINE}
       </Text>
     </Screen>
   );

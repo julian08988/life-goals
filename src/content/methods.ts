@@ -81,11 +81,6 @@ export const CONFIDENCE_LABEL: Record<Confidence, string> = {
   emerging: 'Emerging evidence',
 };
 
-/** "Proven" is used only for strong evidence (spec §2, Product voice). */
-export function confidenceWord(confidence: Confidence): string {
-  return confidence === 'strong' ? 'proven' : confidence;
-}
-
 /**
  * The clause the guide speaks when it asks for an action, drawn from the same note:
  * "Spoken answers are remembered better and expose vague goals; strong evidence."
