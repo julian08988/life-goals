@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Life Goals — concept: goal agent, overview</title>
+<link rel="stylesheet" href="../mockups/tokens.css" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #040507; color: #F2F3F5; font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  #flow { padding: 48px 56px 56px; display: flex; flex-direction: column; gap: 40px; width: max-content; min-width: 2700px; background: #040507; }
+  .head { display: flex; align-items: baseline; justify-content: space-between; }
+  .head h1 { font-size: 30px; font-weight: 300; letter-spacing: -0.6px; }
+  .head p { color: rgba(242,243,245,0.5); font-size: 15px; }
+  .phase { display: flex; flex-direction: column; gap: 14px; }
+  .phase .ph { display: flex; align-items: baseline; gap: 14px; }
+  .phase .ph .n { color: #9FD3FF; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .phase .ph .t { font-size: 18px; font-weight: 400; }
+  .phase .ph .d { color: rgba(242,243,245,0.45); font-size: 14px; }
+  .row { display: flex; align-items: flex-start; }
+  .shot { width: 236px; display: flex; flex-direction: column; gap: 10px; }
+  .frame { width: 236px; height: 511px; overflow: hidden; border-radius: 30px; border: 1px solid rgba(255,255,255,0.09); background: #07080B; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+  .frame iframe { width: 393px; height: 852px; border: 0; transform: scale(0.6); transform-origin: 0 0; pointer-events: none; }
+  .cap { display: flex; gap: 8px; align-items: baseline; padding: 0 4px; }
+  .cap i { font-style: normal; color: #9FD3FF; font-size: 11px; letter-spacing: 1px; }
+  .cap span { font-size: 13px; color: rgba(242,243,245,0.72); line-height: 18px; }
+  .arrow { width: 44px; height: 511px; display: flex; align-items: center; justify-content: center; color: rgba(159,211,255,0.55); flex: none; }
+  .arrow svg { width: 24px; height: 12px; }
+  .arrow.down { width: 236px; height: 28px; margin-left: 0; transform: rotate(90deg); display: none; }
+  .legend { display: flex; gap: 28px; color: rgba(242,243,245,0.45); font-size: 13px; }
+  .legend b { color: #9FD3FF; font-weight: 500; }
+</style>
+</head>
+<body>
+<div id="flow">
+  <div class="head">
+    <h1>Life Goals — concept: goal agent · one goal, one agent built for it, relentless until the line</h1>
+    <p>Demo persona: Lena, backend engineer, full-time job, no audience · goal: an app that makes $10k a month · agent “Ten-k” · two sources: you and the record</p>
+  </div>
+  <div id="phases"></div>
+  <div class="legend"><span><b>→</b> tap leads to</span><span><b>halo</b> listening / speaking / thinking</span><span><b>line</b> start → finish, hollow dot = plan, lit dot = you</span><span>Tabs: Today · Agents · Review</span></div>
+</div>
+<script>
+  const PHASES = [
+    ['1', 'State the goal · Build, source one: you', 'One goal with a date; the agent interviews while the record is researched in the background', [
+      ['01', 'State the goal', '/state?done=1'],
+      ['02', 'The finish line, as stated', '/goal'],
+      ['03', 'Two sources', '/build'],
+      ['04', 'You · research in progress', '/build/time?live=1'],
+      ['05', 'You · time and money', '/build/time?done=1'],
+      ['06', 'You · audience and network', '/build/reach?done=1'],
+      ['07', 'You · abilities and pattern', '/build/ship?done=1'],
+    ]],
+    ['2', 'Build, source two: the record · confront', 'A dossier for this exact goal; then your answers against it, and the question the gap produces', [
+      ['08', 'Record · cases', '/record'],
+      ['09', 'Record · path and numbers', '/record/path'],
+      ['10', 'Record · failure modes', '/record/fails'],
+      ['11', 'Record · experts, sources', '/record/experts'],
+      ['12', 'Confront · your date', '/confront/deadline'],
+      ['13', 'Confront · your pattern', '/confront/pattern'],
+    ]],
+    ['3', 'The plan, with origins', 'Every step: dated deliverable, its origin in the record, the fact about you that selected it, why not the alternative, the gate', [
+      ['14', 'The plan', '/plan'],
+      ['15', 'Step 1 · the market', '/plan/step/1'],
+      ['16', 'Step 2 · pre-sell gate', '/plan/step/2'],
+      ['17', 'Step 4 · the listing', '/plan/step/4'],
+      ['18', 'Step 6 · paid on top', '/plan/step/6'],
+      ['19', 'Decision points and kill criteria', '/plan/gates'],
+      ['20', 'Commitment', '/commit'],
+    ]],
+    ['4', 'The agent at work', 'Honest status, tonight’s demand, check-ins it starts, evidence or no tick', [
+      ['21', 'Agent home · behind by 1', '/home'],
+      ['22', 'Check-in · lock screen', '/checkin/lock'],
+      ['23', 'Check-in', '/checkin'],
+      ['24', 'Evidence', '/evidence'],
+      ['25', 'Evidence · captured', '/evidence?done=1'],
+      ['26', 'Evidence accepted', '/evidence/ok'],
+    ]],
+    ['5', 'When it slips, the rhythm, the end', 'Drift in your own words; a forced choice; a gate fires and the rule runs; weekly numbers; agents; the line', [
+      ['27', 'Drift', '/drift'],
+      ['28', 'Recommit', '/recommit'],
+      ['29', 'Replan · a gate fired', '/replan'],
+      ['30', 'Weekly accountability review', '/review'],
+      ['31', 'Agents', '/agents'],
+      ['32', 'Second agent', '/agent/second'],
+      ['33', 'Finish line', '/finish'],
+      ['34', 'Settings · intensity', '/settings'],
+    ]],
+  ];
+  const arrow = '<div class="arrow"><svg viewBox="0 0 24 12"><path d="M0 6h20M15 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>';
+  document.getElementById('phases').innerHTML = PHASES.map(([n, t, d, shots]) => `
+    <div class="phase" style="margin-bottom:12px">
+      <div class="ph"><span class="n">Phase ${n}</span><span class="t">${t}</span><span class="d">${d}</span></div>
+      <div class="row">${shots.map(([i, cap, hash], k) => `${k ? arrow : ''}<div class="shot"><div class="frame"><iframe src="./index.html?bare=1#${hash}"></iframe></div><div class="cap"><i>${i}</i><span>${cap}</span></div></div>`).join('')}</div>
+    </div>`).join('');
+</script>
+</body>
+</html>

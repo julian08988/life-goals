@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>07 Weekly Review</title>
+<link rel="stylesheet" href="../shared.css" />
+<style>
+  .content { gap: 16px; }
+  .pri { display: flex; flex-direction: column; gap: 5px; padding: 14px 0; border-bottom: 1px solid var(--color-hairline); }
+  .pri .thr { color: var(--color-text-faint); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pri .thr b { font-weight: 400; color: var(--color-text-muted); }
+  .pri .state { display: flex; align-items: center; gap: 8px; margin-top: 3px; }
+  .pri .state i { width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 10px rgba(159,211,255,0.55); display: block; flex: none; }
+  .pri .state .small { color: var(--color-text-muted); }
+  .pri.active { padding: 16px; margin: 0 -16px; border: 1px solid var(--color-hairline); border-radius: var(--radius-lg); background: rgba(14,16,22,0.7); }
+  .pri .acts { display: flex; gap: 8px; margin-top: 8px; }
+  .foot { padding-bottom: 28px; }
+  .pri .thr { white-space: normal; }
+</style>
+</head>
+<body>
+<div class="device">
+  <div class="ambient"></div>
+  <div class="status"><span>9:41</span><div class="island"></div><div class="right"><span class="cell"><i style="height:4px"></i><i style="height:6px"></i><i style="height:8px"></i><i style="height:11px"></i></span><span class="wifi"></span><span class="battery"></span></div></div>
+
+  <div class="content">
+    <div class="eyebrow">
+      <div class="stack" style="gap:2px">
+        <span class="label">Weekly review · 9–15 Nov · 1 of 3</span>
+        <span class="title">Close last week.</span>
+      </div>
+      <span class="btn ghost compact" style="margin-right:-12px">Leave</span>
+    </div>
+
+    <div class="guide">
+      <div class="halo inline" data-state="speaking"></div>
+      <p class="heading">Done, carried or dropped, one at a time. All three are neutral.</p>
+    </div>
+
+    <div class="list" style="gap:0">
+      <div class="pri">
+        <span class="body">List every past client with a one-line note on what we did.</span>
+        <span class="small thr">for <b>“Three discovery calls”</b> → the studio</span>
+        <div class="state"><i></i><span class="small">Done · “Took an evening. Twelve names.”</span></div>
+      </div>
+      <div class="pri">
+        <span class="body">Two training sessions.</span>
+        <span class="small thr">for <b>“Eight training sessions”</b> → a long hike at seventy</span>
+        <div class="state"><i></i><span class="small">Done</span></div>
+      </div>
+      <div class="pri active">
+        <span class="body">Buy the theory book and read the introduction.</span>
+        <span class="small thr">for <b>“Theory chapters one to four”</b> → open water</span>
+        <span class="small muted" style="margin-top:3px">Book ordered. The introduction is still open.</span>
+        <div class="acts">
+          <span class="btn primary compact">Done</span>
+          <span class="btn secondary compact">Carry</span>
+          <span class="btn ghost compact">Drop</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="why">
+      <span class="small">One sentence per priority, no guilt. Neutral review keeps you in the game.</span>
+      <span class="tag moderate">Moderate</span>
+    </div>
+
+    <div class="foot row">
+      <span class="small faint">Then one sentence about the week.</span>
+      <span class="btn secondary compact">Plan 16–22 Nov</span>
+    </div>
+  </div>
+
+  <div class="home"></div>
+</div>
+</body>
+</html>
