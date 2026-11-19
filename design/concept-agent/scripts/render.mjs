@@ -29,27 +29,39 @@ const base = `http://127.0.0.1:${server.address().port}`;
 // Screens in journey order. `done=1` renders the end state of screens that animate.
 const SCREENS = [
   ['01-state-the-goal', '/state?done=1'],
-  ['02-finish-line', '/goal'],
-  ['03-build-why', '/build/why?done=1'],
-  ['04-build-constraints', '/build/constraints?done=1'],
-  ['05-build-obstacles', '/build/obstacles?done=1'],
-  ['06-build-patterns', '/build/patterns?done=1'],
-  ['07-plan', '/plan'],
-  ['08-commit', '/commit'],
-  ['09-agent-home', '/home'],
-  ['10-checkin-lock-screen', '/checkin/lock'],
-  ['11-checkin', '/checkin'],
-  ['12-evidence', '/evidence'],
-  ['13-evidence-captured', '/evidence?done=1'],
-  ['14-evidence-accepted', '/evidence/ok'],
-  ['15-drift', '/drift'],
-  ['16-recommit', '/recommit'],
-  ['17-replan', '/replan'],
-  ['18-weekly-review', '/review'],
-  ['19-agents', '/agents'],
-  ['20-second-agent', '/agent/card'],
-  ['21-finish-line', '/finish'],
-  ['22-settings-intensity', '/settings'],
+  ['02-finish-line-as-stated', '/goal'],
+  ['03-two-sources', '/build'],
+  ['04-you-time-money-research-in-progress', '/build/time?live=1'],
+  ['05-you-time-money', '/build/time?done=1'],
+  ['06-you-audience-network', '/build/reach?done=1'],
+  ['07-you-abilities-pattern', '/build/ship?done=1'],
+  ['08-record-cases', '/record'],
+  ['09-record-path-numbers', '/record/path'],
+  ['10-record-failure-modes', '/record/fails'],
+  ['11-record-experts-sources', '/record/experts'],
+  ['12-confront-your-date', '/confront/deadline'],
+  ['13-confront-your-pattern', '/confront/pattern'],
+  ['14-plan-with-origins', '/plan'],
+  ['15-plan-step-1-market', '/plan/step/1'],
+  ['16-plan-step-2-presell-gate', '/plan/step/2'],
+  ['17-plan-step-4-listing', '/plan/step/4'],
+  ['18-plan-step-6-paid', '/plan/step/6'],
+  ['19-plan-gates-kill-criteria', '/plan/gates'],
+  ['20-commit', '/commit'],
+  ['21-agent-home', '/home'],
+  ['22-checkin-lock-screen', '/checkin/lock'],
+  ['23-checkin', '/checkin'],
+  ['24-evidence', '/evidence'],
+  ['25-evidence-captured', '/evidence?done=1'],
+  ['26-evidence-accepted', '/evidence/ok'],
+  ['27-drift', '/drift'],
+  ['28-recommit', '/recommit'],
+  ['29-replan-gate-fired', '/replan'],
+  ['30-weekly-review', '/review'],
+  ['31-agents', '/agents'],
+  ['32-second-agent', '/agent/second'],
+  ['33-finish-line', '/finish'],
+  ['34-settings-intensity', '/settings'],
 ];
 
 
@@ -75,7 +87,7 @@ if (process.argv.includes('--serve')) {
   }
 
   const flow = await ctx.newPage();
-  await flow.setViewportSize({ width: 2500, height: 2000 });
+  await flow.setViewportSize({ width: 2700, height: 2900 });
   await flow.goto(`${base}/concept-agent/flow.html`, { waitUntil: 'networkidle' });
   await settle(flow);
   await flow.waitForFunction(() => [...document.querySelectorAll('iframe')].every((i) => i.contentDocument?.readyState === 'complete' && i.contentDocument.querySelector('#screen > *')));

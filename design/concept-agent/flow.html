@@ -7,7 +7,7 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { background: #040507; color: #F2F3F5; font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-  #flow { padding: 48px 56px 56px; display: flex; flex-direction: column; gap: 40px; width: max-content; min-width: 2500px; background: #040507; }
+  #flow { padding: 48px 56px 56px; display: flex; flex-direction: column; gap: 40px; width: max-content; min-width: 2700px; background: #040507; }
   .head { display: flex; align-items: baseline; justify-content: space-between; }
   .head h1 { font-size: 30px; font-weight: 300; letter-spacing: -0.6px; }
   .head p { color: rgba(242,243,245,0.5); font-size: 15px; }
@@ -34,40 +34,56 @@
 <div id="flow">
   <div class="head">
     <h1>Life Goals — concept: goal agent · one goal, one agent built for it, relentless until the line</h1>
-    <p>Demo persona: Tomás, chemistry teacher, Lisbon · goal: half marathon under 2:00 on 15 March · agent “Sub-two” · halo = voice</p>
+    <p>Demo persona: Lena, backend engineer, full-time job, no audience · goal: an app that makes $10k a month · agent “Ten-k” · two sources: you and the record</p>
   </div>
   <div id="phases"></div>
   <div class="legend"><span><b>→</b> tap leads to</span><span><b>halo</b> listening / speaking / thinking</span><span><b>line</b> start → finish, hollow dot = plan, lit dot = you</span><span>Tabs: Today · Agents · Review</span></div>
 </div>
 <script>
   const PHASES = [
-    ['1', 'State the goal, build the agent', 'One goal with a date; four questions make an agent that fits this person', [
+    ['1', 'State the goal · Build, source one: you', 'One goal with a date; the agent interviews while the record is researched in the background', [
       ['01', 'State the goal', '/state?done=1'],
-      ['02', 'The finish line', '/goal'],
-      ['03', 'Build · why this, why now', '/build/why?done=1'],
-      ['04', 'Build · deadline and constraints', '/build/constraints?done=1'],
-      ['05', 'Build · obstacles, if-then', '/build/obstacles?done=1'],
-      ['06', 'Build · your pattern', '/build/patterns?done=1'],
-      ['07', 'The proposed plan', '/plan'],
-      ['08', 'Commitment', '/commit'],
+      ['02', 'The finish line, as stated', '/goal'],
+      ['03', 'Two sources', '/build'],
+      ['04', 'You · research in progress', '/build/time?live=1'],
+      ['05', 'You · time and money', '/build/time?done=1'],
+      ['06', 'You · audience and network', '/build/reach?done=1'],
+      ['07', 'You · abilities and pattern', '/build/ship?done=1'],
     ]],
-    ['2', 'The agent at work', 'Honest status, today’s demand, check-ins it starts, evidence or no tick', [
-      ['09', 'Agent home · behind by 2', '/home'],
-      ['10', 'Check-in · lock screen', '/checkin/lock'],
-      ['11', 'Check-in', '/checkin'],
-      ['12', 'Evidence', '/evidence'],
-      ['13', 'Evidence · captured', '/evidence?done=1'],
-      ['14', 'Evidence accepted', '/evidence/ok'],
+    ['2', 'Build, source two: the record · confront', 'A dossier for this exact goal; then your answers against it, and the question the gap produces', [
+      ['08', 'Record · cases', '/record'],
+      ['09', 'Record · path and numbers', '/record/path'],
+      ['10', 'Record · failure modes', '/record/fails'],
+      ['11', 'Record · experts, sources', '/record/experts'],
+      ['12', 'Confront · your date', '/confront/deadline'],
+      ['13', 'Confront · your pattern', '/confront/pattern'],
     ]],
-    ['3', 'When it slips, and the rhythm', 'Drift named with the reason in your words; a choice you must make; the path bends, the line does not', [
-      ['15', 'Drift', '/drift'],
-      ['16', 'Recommit', '/recommit'],
-      ['17', 'Replan', '/replan'],
-      ['18', 'Weekly accountability review', '/review'],
-      ['19', 'Agents', '/agents'],
-      ['20', 'Second agent · Card clear', '/agent/card'],
-      ['21', 'Finish line', '/finish'],
-      ['22', 'Settings · intensity', '/settings'],
+    ['3', 'The plan, with origins', 'Every step: dated deliverable, its origin in the record, the fact about you that selected it, why not the alternative, the gate', [
+      ['14', 'The plan', '/plan'],
+      ['15', 'Step 1 · the market', '/plan/step/1'],
+      ['16', 'Step 2 · pre-sell gate', '/plan/step/2'],
+      ['17', 'Step 4 · the listing', '/plan/step/4'],
+      ['18', 'Step 6 · paid on top', '/plan/step/6'],
+      ['19', 'Decision points and kill criteria', '/plan/gates'],
+      ['20', 'Commitment', '/commit'],
+    ]],
+    ['4', 'The agent at work', 'Honest status, tonight’s demand, check-ins it starts, evidence or no tick', [
+      ['21', 'Agent home · behind by 1', '/home'],
+      ['22', 'Check-in · lock screen', '/checkin/lock'],
+      ['23', 'Check-in', '/checkin'],
+      ['24', 'Evidence', '/evidence'],
+      ['25', 'Evidence · captured', '/evidence?done=1'],
+      ['26', 'Evidence accepted', '/evidence/ok'],
+    ]],
+    ['5', 'When it slips, the rhythm, the end', 'Drift in your own words; a forced choice; a gate fires and the rule runs; weekly numbers; agents; the line', [
+      ['27', 'Drift', '/drift'],
+      ['28', 'Recommit', '/recommit'],
+      ['29', 'Replan · a gate fired', '/replan'],
+      ['30', 'Weekly accountability review', '/review'],
+      ['31', 'Agents', '/agents'],
+      ['32', 'Second agent', '/agent/second'],
+      ['33', 'Finish line', '/finish'],
+      ['34', 'Settings · intensity', '/settings'],
     ]],
   ];
   const arrow = '<div class="arrow"><svg viewBox="0 0 24 12"><path d="M0 6h20M15 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>';
